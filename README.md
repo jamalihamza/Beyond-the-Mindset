@@ -20,6 +20,9 @@ Inspiration for the project came from reputable sources such as the NHS, NIH, an
 Future Plans:
 While the current version focuses on health calculators, there are plans to expand the platform to include mental health assessments and a blog section. These additions aim to provide users with a more comprehensive resource for health and wellness, offering insights and support for both physical and mental well-being.
 
+Note:
+The website does not currently include mobile and tablet versions, as time constraints did not allow for responsive design implementation.
+
 Installation Instructions
 To set up the project locally, follow these steps:
 
