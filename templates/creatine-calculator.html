@@ -1,0 +1,269 @@
+{% extends 'calculator-page-layout.html' %}
+
+
+{% block calculator_title %}Creatine Calculator{% endblock %}
+
+{% block calculator_style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/creatine-style.css') }}"/>
+{% endblock %}
+
+{% block calculator_script %}
+  <script src="{{ url_for('static', filename='js/creatine-calculator.js') }}" type="text/javascript" defer></script>
+{% endblock %}
+
+
+{% block calculator_page_title %}Creatine Calculator{% endblock %}
+
+{% block calculator_page_description %}Creatine is a naturally occurring substance in muscle cells that
+plays a vital role in energy production during high-intensity
+exercises. For athletes and bodybuilders, creatine supplementation
+can lead to improved performance, increased muscle mass, and
+enhanced recovery. Use our creatine calculator to determine your
+optimal dosage based on your activity level and body composition
+to maximize your gains.{% endblock %}
+
+
+{% block calculator_page_section %}
+  <section class="creatinetable-section">
+    <div class="creatine-calc-container">
+      <h1>Creatine Calculator</h1>
+
+      <form class="calculator">
+        <div>
+          <label class="weight-label" for="weight">Weight (kg)</label>
+          <input
+            type="number"
+            id="weight"
+            min="0"
+            step="any"
+            value="0"
+            inputmode="decimal"
+            onfocus="if (this.value === '0') this.value = ''"
+          />
+        </div>
+
+        <h3>Phase of Use</h3>
+        <div class="radio-options">
+          <label class="radio-option">
+            <input type="radio" name="phase_of_use" value="loading_phase" />
+            Loading Phase
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="phase_of_use" value="maintenance_phase" />
+            Maintenance Phase
+          </label>
+        </div>
+      </form>
+
+      <section class="output">
+        <h3>Your target daily water intake</h3>
+        <p id="result">0 grams/day</p>
+        <p id="info">N/A</p>
+      </section>
+    </div>
+  </section>
+{% endblock %}
+
+{% block calculator_page_article %}
+  <h4 class="calculator-article-headline">
+    <strong>Understanding Creatine</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Creatine is a substance that occurs naturally in the body, primarily
+    found in muscle cells. It aids in producing adenosine triphosphate
+    (ATP), the primary energy carrier in cells, which is essential for
+    high-intensity activities such as weightlifting, sprinting, or any
+    demanding exercise.
+  </p>
+  <p class="calculator-article-description">
+    Approximately 95% of the body&#x27;s creatine is stored in the
+    muscles, with the remainder distributed across the brain, liver,
+    pancreas, and kidneys. During high-intensity workouts, stored creatine
+    is rapidly depleted, making supplementation beneficial for athletes
+    and those engaging in heavy lifting or endurance training.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>The Role of Creatine in Energy Production</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Creatine helps replenish ATP levels in the body, allowing muscles to
+    maintain peak performance during intense exercise. Here’s how it
+    works:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>Energy Source: </strong
+      ><span class="light-span"
+        ><strong
+          >ATP is crucial for muscle contractions. Higher levels of ATP
+          result in increased muscular power and endurance, enabling
+          athletes to push through intense training sessions.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Increased Performance: </strong
+      ><span class="light-span"
+        ><strong
+          >By supplementing with creatine, you can enhance your training
+          volume, allowing for more repetitions and heavier lifts, leading
+          to greater muscle growth and strength adaptations over
+          time.</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <h4 class="calculator-article-headline">
+    <strong>Benefits of Creatine Supplementation</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Creatine supplementation can significantly enhance muscle gain and
+    performance through several mechanisms:
+  </p>
+  <ol role="list" class="list">
+    <li>
+      <strong>Improved Workload: </strong
+      ><span class="light-span"
+        ><strong
+          >Creatine increases the total volume of work performed during a
+          workout, a key factor for long-term muscle growth.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Enhanced Cell Signaling: </strong
+      ><span class="light-span"
+        ><strong
+          >It boosts satellite cell signaling, which is essential for
+          muscle repair and growth.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Increased Anabolic Hormones: </strong
+      ><span class="light-span"
+        ><strong
+          >Creatine may lead to higher levels of hormones involved in
+          muscle hypertrophy, benefiting those looking to build
+          muscle.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Decreased Myostatin Levels: </strong
+      ><span class="light-span"
+        ><strong
+          >Myostatin is a protein that inhibits muscle growth. Creatine
+          can lower myostatin levels, facilitating new muscle
+          growth.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Cell Hydration: </strong
+      ><span class="light-span"
+        ><strong
+          >Creatine draws water into muscle cells, which can lead to an
+          initial weight gain but is generally healthy and beneficial for
+          muscle development.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Reduced Protein Breakdown: </strong
+      ><span class="light-span"
+        ><strong
+          >It can help prevent muscle atrophy, contributing to greater
+          overall muscle mass.</strong
+        ></span
+      >
+    </li>
+  </ol>
+  <h4 class="calculator-article-headline">
+    <strong>Recommended Dosage: When and How Much to Take?</strong>
+  </h4>
+  <p class="calculator-article-description">
+    The typical daily requirement for maintaining creatine levels is
+    between 1-3 grams, but this varies based on individual factors such as
+    lean muscle mass, activity levels, and hormonal balance.
+  </p>
+  <p class="calculator-article-description">
+    For athletes and active individuals, a higher intake may be necessary.
+    Supplementation usually comes in powder form, with common
+    recommendations including:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>Loading Phase: </strong
+      ><span class="light-span"
+        ><strong
+          >Some manufacturers suggest taking up to 20 grams of creatine
+          per day for the first month to saturate muscle stores. However,
+          there’s limited evidence to support this practice, as creatine
+          levels can be effectively maintained with just 3-5 grams
+          daily.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Maintenance Dose: </strong
+      ><span class="light-span"
+        ><strong
+          >A daily intake of 3-5 grams is sufficient for most people. It’s
+          not uncommon for athletes to go as high as 10 grams, with slight
+          variations based on individual needs.</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <p class="calculator-article-description">
+    To determine your specific creatine requirements, consider using a
+    creatine level calculator that factors in your biometrics and activity
+    levels.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>Dietary Sources of Creatine</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Most dietary creatine is obtained from meat, particularly red meat.
+    Individuals who consume more meat, especially cuts close to the bone,
+    typically have higher creatine levels. Those on plant-based diets or
+    during periods of caloric restriction may need to rely more heavily on
+    supplementation to meet their creatine needs.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>Important Considerations</strong>
+  </h4>
+  <ul role="list" class="list">
+    <li>
+      <strong>Consult a Healthcare Professional: </strong
+      ><span class="light-span"
+        ><strong
+          >Before starting any supplementation, it&#x27;s essential to
+          speak with your doctor or a nutritionist to ensure that it
+          aligns with your health needs.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Individual Factors: </strong
+      ><span class="light-span"
+        ><strong
+          >Keep in mind that factors such as exercise intensity, muscle
+          mass, and training frequency significantly influence your
+          body&#x27;s creatine requirements.</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <h4 class="calculator-article-headline"><strong>Conclusion</strong></h4>
+  <p class="calculator-article-description">
+    Creatine supplementation is a powerful tool for enhancing performance
+    and muscle growth in athletes and fitness enthusiasts alike. By
+    understanding how to effectively use creatine and tailoring your
+    dosage to your unique body composition and activity level, you can
+    optimize your training and achieve your fitness goals. Utilize our
+    recommended creatine calculator to find your ideal dosage and start
+    maximizing your performance today.
+  </p>
+{% endblock %}

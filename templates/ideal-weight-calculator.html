@@ -1,0 +1,180 @@
+{% extends 'calculator-page-layout.html' %}
+
+
+{% block calculator_title %}Ideal Weight Calculator{% endblock %}
+
+{% block calculator_style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ideal-weight-style.css') }}"/>
+{% endblock %}
+
+{% block calculator_script %}
+  <script src="{{ url_for('static', filename='js/ideal-weight-calculator.js') }}" type="text/javascript" defer></script>
+{% endblock %}
+
+
+{% block calculator_page_title %}Ideal Weight Calculator{% endblock %}
+
+{% block calculator_page_description %}The Ideal Weight Calculator computes a person&#x27;s ideal weight
+based on height and gender using various established formulas. It
+compares results from formulas like Devine, Miller, Hamwi, and
+Robinson, giving users insight into their target weight range.{% endblock %}
+
+
+{% block calculator_page_section %}
+  <section class="bmitable-section">
+    <div class="ibw-calc-container">
+      <h1>IBW Calculator</h1>
+
+      <form id="calculator" class="calculator">
+        <div>
+          <label for="height">Height (cm)</label>
+          <input type="number" id="height" placeholder="Height in cm" min="0" value="0" step="0.01">
+        </div>
+        <div>
+          <label for="age">Age</label>
+          <input type="number" id="age" placeholder="Age" min="0" value="0">
+        </div>
+        <div>
+          <label for="gender">Gender</label>
+          <select id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="button-container">
+          <button type="reset">Reset</button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+
+      <div id="result">
+
+        <div class="formula-results">
+          <h3>Ideal Body Weight Formulas</h3>
+
+          <ul class="formula-table">
+            <li>
+              <p>
+                <strong class="name">Hamwi</strong>
+              </p>
+              <span class="value" id="hamwi">0</span>
+            </li>
+            <li>
+              <p>
+                <strong class="name">Devine</strong>
+              </p>
+              <span class="value" id="devine">0</span>
+            </li>
+            <li>
+              <p>
+                <strong class="name">Robinson</strong>
+              </p>
+              <span class="value" id="robinson">0</span>
+            </li>
+            <li>
+              <p>
+                <strong class="name">Miller</strong>
+              </p>
+              <span class="value" id="miller">0 kg</span>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block calculator_page_article %}
+  <h4 class="calculator-article-headline">
+    <strong>What Does Ideal Body Weight Mean?</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Ideal Body Weight (IBW) refers to the optimal weight a person should
+    maintain based on factors like height and gender. Traditional formulas
+    for calculating IBW don’t account for body composition, such as muscle
+    or fat mass, which can cause some variability. Though these formulas
+    offer helpful guidance, they are not absolute rules.<br />‍<br />The
+    following formulas are used to calculate IBW:
+  </p>
+  <ul role="list" class="list">
+        <li>
+          <strong>Devine Formula (1974)</strong>
+          <ul>
+            <li>Male: 50.0 kg + 0.9 kg per cm over 152.4 cm</li>
+            <li>Female: 45.5 kg + 0.9 kg per cm over 152.4 cm</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Miller Formula (1983)</strong>
+          <ul>
+            <li>Male: 56.2 kg + 0.55 kg per cm over 152.4 cm</li>
+            <li>Female: 53.1 kg + 0.54 kg per cm over 152.4 cm</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Hamwi Formula (1964)</strong>
+          <ul>
+            <li>Male: 48.0 kg + 1.06 kg per cm over 152.4 cm</li>
+            <li>Female: 45.5 kg + 0.91 kg per cm over 152.4 cm</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Robinson Formula (1983)</strong>
+          <ul>
+            <li>Male: 52 kg + 0.74 kg per cm over 152.4 cm</li>
+            <li>Female: 49 kg + 0.67 kg per cm over 152.4 cm</li>
+          </ul>
+        </li>
+      </ul>
+  <p class="calculator-article-description">
+    These formulas calculate an ideal weight based on height, with 152.4
+    cm (5 feet) as the baseline and additional weight added for each
+    centimeter above this height.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>The Connection Between Healthy Weight and BMI</strong>
+  </h4>
+  <p class="calculator-article-description">
+    <a href="{{ url_for('bmi_calculator') }}"><span class="cta-span">Body Mass Index (BMI)</span></a> is another tool used to evaluate whether a
+    person’s weight is in a healthy range. It is calculated by dividing a
+    person’s weight in kilograms by the square of their height in meters
+    (kg/m²). BMI groups people into categories:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>Underweight: </strong
+      ><span class="light-span"><strong>BMI &lt; 18.5</strong></span>
+    </li>
+    <li>
+      <strong>Normal Weight: </strong
+      ><span class="light-span"
+        ><strong>BMI between 18.5 and 24.9</strong></span
+      >
+    </li>
+    <li>
+      <strong>Overweight: </strong
+      ><span class="light-span"
+        ><strong>BMI between 25 and 29.9</strong></span
+      >
+    </li>
+    <li>
+      <strong>Obese: </strong
+      ><span class="light-span"><strong>BMI ≥ 30</strong></span>
+    </li>
+  </ul>
+  <p class="calculator-article-description">
+    The World Health Organization (WHO) recommends maintaining a BMI
+    within the 18.5 to 24.9 range for both men and women, which is
+    associated with reduced risks of diseases such as diabetes,
+    cardiovascular diseases, and certain cancers. While BMI offers
+    valuable insight, it doesn’t account for muscle mass, bone density, or
+    body fat distribution, so it’s often best used in combination with IBW
+    formulas.
+  </p>
+  <p class="calculator-article-description">
+    The IBW and BMI methods together give a more comprehensive
+    understanding of a person’s health and weight goals.
+  </p>
+{% endblock %}

@@ -1,0 +1,325 @@
+{% extends 'calculator-page-layout.html' %}
+
+
+{% block calculator_title %}Body Fat Calculator{% endblock %}
+
+{% block calculator_style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/body-fat-style.css') }}"/>
+{% endblock %}
+
+{% block calculator_script %}
+  <script src="{{ url_for('static', filename='js/body-fat-calculator.js') }}" type="text/javascript" defer></script>
+{% endblock %}
+
+
+{% block calculator_page_title %}Body Fat Percentage Calculator{% endblock %}
+
+{% block calculator_page_description %}Unlock a deeper understanding of your health with our Body Fat
+Calculator. This simple yet powerful tool helps you measure your
+body fat percentage, offering a clearer picture of your overall
+fitness and well-being. Whether you&#x27;re tracking progress or
+setting new goals, knowing your body fat percentage is a key step
+toward a healthier, balanced life.{% endblock %}
+
+
+{% block calculator_page_section %}
+  <section class="bfptable-section">
+    <div class="bfp-calc-container">
+      <h1>BFP Calculator</h1>
+
+      <form class="calculator">
+        <div class="gender-field">
+          <label for="gender">Gender</label>
+          <select id="gender" onchange="toggleHipField()">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="height">Height (cm)</label>
+          <input type="number" id="height" min="0" step="any" value="0" inputmode="decimal" />
+        </div>
+
+        <div>
+          <label for="neck">Neck (cm)</label>
+          <input type="number" id="neck" min="0" step="any" value="0" inputmode="decimal" />
+        </div>
+
+        <div>
+          <label for="waist">Waist (cm)</label>
+          <input type="number" id="waist" min="0" step="any" value="0" inputmode="decimal" />
+        </div>
+
+        <div id="hip-container" class="hip-field">
+          <label for="hip">Hip (cm)</label>
+          <input type="number" id="hip" min="0" step="any" value="0" inputmode="decimal" />
+        </div>
+
+        <div>
+          <button type="reset">Reset</button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+
+      <section class="output">
+        <h3>Your estimated body fat percentage is</h3>
+        <p id="bfp">0</p>
+        <p id="desc">N/A</p>
+      </section>
+
+      <section class="bfp-scale">
+        <div style="--color: var(--essential)">
+          <h4>Essential</h4>
+          <p class="male" style="display: block;">2% ≤ BF% &lt; 6%</p>
+          <p class="female" style="display: none;">10% ≤ BF% &lt; 14%</p>
+        </div>
+
+        <div style="--color: var(--athletes)">
+          <h4>Athletes</h4>
+          <p class="male" style="display: block;">6% ≤ BF% &lt; 14%</p>
+          <p class="female" style="display: none;">14% ≤ BF% &lt; 21%</p>
+        </div>
+
+        <div style="--color: var(--fitness)">
+          <h4>Fitness</h4>
+          <p class="male" style="display: block;">14% ≤ BF% &lt; 18%</p>
+          <p class="female" style="display: none;">21% ≤ BF% &lt; 25%</p>
+        </div>
+
+        <div style="--color: var(--average)">
+          <h4>Average</h4>
+          <p class="male" style="display: block;">18% ≤ BF% &lt; 25%</p>
+          <p class="female" style="display: none;">25% ≤ BF% &lt; 32%</p>
+        </div>
+
+        <div style="--color: var(--obese)">
+          <h4>Obese</h4>
+          <p class="male" style="display: block;">BF% ≥ 25%</p>
+          <p class="female" style="display: none;">BF% ≥ 32%</p>
+        </div>
+      </section>
+    </div>
+  </section>
+{% endblock %}
+
+{% block calculator_page_article %}
+  <h4 class="calculator-article-headline">
+    <strong
+      >Curious about understanding your body&#x27;s fat composition
+      better? Dive into our Body Fat Calculator to reveal your exact fat
+      percentage.</strong
+    >
+  </h4>
+  <p class="calculator-article-description">
+    This tool not only uncovers your current fat levels but also helps you
+    set goals to reach your ideal weight and optimal body fat composition.
+    Utilizing well-known formulas like the U.S. Navy and Covert Bailey
+    methods, this calculator provides accurate insights. Additionally, if
+    you’re interested in calculating your <a href="{{ url_for('lean_body_mass_calculator') }}"><span class="cta-span">lean muscle mass</span></a>, we offer a
+    dedicated section for that.<br />‍<br />Explore these tools to gain a
+    comprehensive understanding of your body&#x27;s composition!
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>How Body Fat Percentage Calculator Works:</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Simply enter your details, hit &#x27;Calculate,&#x27; and let the
+    magic unfold. Our calculator integrates with charts from esteemed
+    health institutions, giving you a clear picture of your current health
+    status. Based on these insights, you can set a goal weight that aligns
+    with a healthy body fat percentage, setting you on a path to optimal
+    well-being.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>Healthy Body Fat Percentages Based on Age:</strong>
+  </h4>
+  <p class="calculator-article-description">
+    According to the American Journal of Clinical Nutrition, the ideal
+    body fat percentage varies by age and gender:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>Ages 20-39: </strong
+      ><span class="light-span"
+        ><strong
+          >Women should aim for 21%-32%, while men should target
+          8%-19%.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Ages 40-59: </strong
+      ><span class="light-span"
+        ><strong
+          >Women should maintain 23%-33%, and men should aim for
+          11%-21%.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Ages 60-79: </strong
+      ><span class="light-span"><strong>Women should target 24%-35%, while men should aim for 13%-24%.</strong></span>
+    </li>
+  </ul>
+  <p class="calculator-article-description">
+    Women naturally have a higher body fat percentage due to physiological
+    differences, including reproductive functions. Maintaining a healthy
+    body fat percentage is essential to reduce the risk of conditions such
+    as diabetes, heart disease, and osteoporosis, especially as we age.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>Understanding Body Fat Percentage:</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Body fat, scientifically known as <strong>adipose tissue</strong>,
+    plays several roles:
+  </p>
+  <ul role="list" class="list">
+    <li><strong>Stores energy in the form of lipids</strong></li>
+    <li><strong>Produces essential hormones</strong></li>
+    <li><strong>Provides cushioning and insulation</strong></li>
+  </ul>
+  <p class="calculator-article-description">
+    Body fat percentage measures the amount of fat relative to your total
+    body weight. For instance, someone weighing 80 kg with 20% body fat
+    has 16 kg of fat (80 kg x 0.20). Unlike <a href="{{ url_for('bmi_calculator') }}"><span class="cta-span">BMI</span></a>, which doesn&#x27;t
+    differentiate between muscle and fat, body fat percentage offers a
+    clearer picture of overall body composition.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>Health Risks of Excessive Body Fat Percentage:</strong>
+  </h4>
+  <p class="calculator-article-description">
+    According to the World Health Organization, obesity is one of the
+    leading preventable causes of death. Excess body fat, especially
+    <strong>visceral fat</strong> (fat around internal organs),
+    significantly raises the risk of:
+  </p>
+  <ul role="list" class="list">
+    <li><strong>Cardiovascular diseases</strong></li>
+    <li><strong>Type 2 diabetes</strong></li>
+    <li><strong>Hormonal imbalances</strong></li>
+    <li>
+      <strong>Elevated cholesterol levels (specifically LDL)</strong>
+    </li>
+  </ul>
+  <p class="calculator-article-description">
+    At healthy body fat levels (around 15%-20% for men), you may look fit
+    and athletic. However, going below or above the recommended range can
+    lead to health complications, making it important to approach fat loss
+    sustainably.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>Methods for Calculating Body Fat Percentage:</strong>
+  </h4>
+  <ol role="list" class="list">
+    <li>
+      <strong><a href="{{ url_for('bmi_calculator') }}"><span class="cta-span">BMI (Body Mass Index)</span></a>:<br /></strong
+      ><span class="light-span"
+        ><strong
+          >The simplest but least accurate method. It provides a rough
+          estimate based on height and weight.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Circumference Measurements:<br /></strong
+      ><span class="light-span"
+        ><strong
+          >Used in methods like the U.S. Navy Method, circumference
+          measurements around specific body parts provide a reliable
+          estimate of body fat. For men, neck and waist measurements are
+          used, while for women, hips are included.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Skinfold Calipers:<br /></strong
+      ><span class="light-span"
+        ><strong
+          >Personal trainers often use calipers to measure body fat by
+          pinching skin at various sites. Though accurate, this method
+          requires experience.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>U.S. Navy Method:<br /></strong
+      ><span class="light-span"
+        ><strong
+          >This method uses circumference measurements (neck, waist, and
+          hips for women) to determine body fat percentage. It is accurate
+          within 3.5% and commonly used by the military.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Covert Bailey Method:<br /></strong
+      ><span class="light-span"
+        ><strong
+          >This formula, named after fitness expert Covert Bailey, is
+          highly accurate, with results within 2% of hydrostatic weighing,
+          using simple tape measurements.</strong
+        ></span
+      >
+    </li>
+  </ol>
+  <h4 class="calculator-article-headline">
+    <strong>The Importance of Managing Body Fat:</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Managing body fat is critical for both short-term and long-term
+    health:
+  </p>
+  <ol role="list" class="list">
+    <li>
+      <strong>Cardiovascular Health: </strong
+      ><span class="light-span"
+        ><strong
+          >Excess fat, especially visceral fat, contributes to high
+          cholesterol and blood pressure, increasing the risk of heart
+          disease.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Hormonal Balance: </strong
+      ><span class="light-span"
+        ><strong
+          >For women, excess body fat can lead to overproduction of male
+          hormones, resulting in symptoms like facial hair and
+          acne.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Diabetes Risk:</strong
+      ><span class="light-span"
+        ><strong>
+          Higher body fat, combined with a high BMI, increases the
+          likelihood of developing type 2 diabetes.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Pregnancy Complications:</strong
+      ><span class="light-span"
+        ><strong>
+          Women with higher body fat face greater risks during pregnancy,
+          including preterm delivery and complications.</strong
+        ></span
+      >
+    </li>
+  </ol>
+  <h4 class="calculator-article-headline">
+    <strong>Estimating Body Fat at Home:</strong>
+  </h4>
+  <p class="calculator-article-description">
+    While advanced methods like DEXA scans offer precision, they may not
+    be accessible to everyone. You can estimate your body fat percentage
+    using a flexible measuring tape or a skinfold caliper. Measure
+    specific areas of the body (waist, neck, hips) for an approximate
+    calculation.
+  </p>
+{% endblock %}

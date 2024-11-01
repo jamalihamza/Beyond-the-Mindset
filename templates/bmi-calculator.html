@@ -1,0 +1,151 @@
+{% extends 'calculator-page-layout.html' %}
+
+
+{% block calculator_title %}Body Mass Index Calculator{% endblock %}
+
+{% block calculator_style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bmi-style.css') }}"/>
+{% endblock %}
+
+{% block calculator_script %}
+  <script src="{{ url_for('static', filename='js/bmi-calculator.js') }}" type="text/javascript" defer></script>
+{% endblock %}
+
+
+{% block calculator_page_title %}Body Mass Index Calculator{% endblock %}
+
+{% block calculator_page_description %}In today&#x27;s world, where maintaining health and fitness is
+crucial, the Body Mass Index (BMI) calculator is a simple yet
+effective tool to gauge whether your weight is within a healthy range
+for your height. By calculating your BMI, you gain valuable insight
+into your body composition and can assess your fitness level
+accurately.{% endblock %}
+
+
+{% block calculator_page_section %}
+  <section class="bmitable-section">
+      <div class="bmi-calc-container">
+          <h1>BMI RANGES</h1>
+
+          <form class="calculator">
+            <div>
+              <label for="height">Height (cm)</label>
+              <input
+                type="number"
+                id="height"
+                min="0"
+                step="any"
+                value="0"
+                inputmode="decimal"
+                onfocus="if (this.value === '0') this.value = ''"
+              />
+            </div>
+
+            <div>
+              <label for="weight">Weight (kg)</label>
+              <input
+                type="number"
+                id="weight"
+                min="0"
+                step="any"
+                value="0"
+                inputmode="decimal"
+                onfocus="if (this.value === '0') this.value = ''"
+              />
+            </div>
+
+            <div>
+              <button type="reset">Reset</button>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+
+          <section class="output">
+            <h3>Your BMI is</h3>
+            <p id="bmi">0</p>
+            <p id="desc">N/A</p>
+          </section>
+
+          <section class="bmi-scale">
+            <div style="--color: var(--underweight)">
+              <h4>Underweight</h4>
+              <p>&lt; 18.5</p>
+            </div>
+
+            <div style="--color: var(--normal)">
+              <h4>Normal</h4>
+              <p>18.5 – 25</p>
+            </div>
+
+            <div style="--color: var(--overweight)">
+              <h4>Overweight</h4>
+              <p>25 – 30</p>
+            </div>
+
+            <div style="--color: var(--obese)">
+              <h4>Obese</h4>
+              <p>≥ 30</p>
+            </div>
+          </section>
+      </div>
+  </section>
+{% endblock %}
+
+{% block calculator_page_article %}
+  <h4 class="calculator-article-headline">What is BMI?</h4>
+  <p class="calculator-article-description">
+  BMI, or Body Mass Index, is a measurement that uses your weight and height
+  to determine whether you&#x27;re underweight, at a healthy weight,
+  overweight, or obese. It serves as a quick reference for understanding
+  your overall health status and how your body weight compares to standard
+  ranges. While it provides a good overview, it’s important to remember that
+  BMI doesn’t account for muscle mass or fat distribution and should be used
+  alongside other health assessments.
+  </p>
+  <h4 class="calculator-article-headline">
+  <strong>How to Calculate BMI?</strong>
+  </h4>
+  <p class="calculator-article-description">
+  BMI is calculated by dividing your weight (in kilograms) by your height
+  (in meters squared). The resulting number fits into different ranges, each
+  indicating a general health status:
+  </p>
+  <ul role="list" class="list">
+  <li>
+      <strong>Below 18.5</strong>:
+      <span class="dark-span">Underweight</span>
+  </li>
+  <li>
+      <strong>18.5 - 24.9</strong>:
+      <span class="dark-span">Healthy weight</span>
+  </li>
+  <li>
+      <strong>25 - 29.9</strong>:
+      <span class="dark-span">Overweight</span>
+  </li>
+  <li>
+      <strong>30 or above</strong>:
+      <span class="dark-span">Obese</span>
+  </li>
+  </ul>
+  <p class="calculator-article-description">
+  For children and teens, BMI also considers age and gender, as growth
+  patterns vary widely.
+  </p>
+  <h4 class="calculator-article-headline">
+  <strong>Why is BMI Important?</strong>
+  </h4>
+  <p class="calculator-article-description">
+  Tracking your BMI can help you stay on top of your fitness journey.
+  Whether you&#x27;re aiming to lose weight, build muscle, or maintain a
+  healthy balance, knowing your BMI is a good starting point for setting
+  realistic goals. It can also serve as a health indicator, with a normal
+  BMI range associated with lower risks of heart disease, diabetes, and
+  other weight-related conditions.<br />‍<br />However, for more precise
+  measurements, especially for individuals with higher muscle mass or
+  special health conditions, it’s important to use other tools, such as
+  <a href="{{ url_for('body_fat_calculator') }}"><span class="cta-span">body fat percentage</span></a> or waist circumference.
+  </p>
+{% endblock %}
+
+

@@ -1,0 +1,225 @@
+{% extends 'calculator-page-layout.html' %}
+
+
+{% block calculator_title %}Water Intake Calculator{% endblock %}
+
+{% block calculator_style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/water-intake-style.css') }}"/>
+{% endblock %}
+
+{% block calculator_script %}
+  <script src="{{ url_for('static', filename='js/water-intake-calculator.js') }}" type="text/javascript" defer></script>
+{% endblock %}
+
+
+{% block calculator_page_title %}Water Intake Calculator{% endblock %}
+
+{% block calculator_page_description %}It’s easy to underestimate the importance of staying hydrated
+daily, and knowing the right amount of water can be tricky. Our
+bodies send signals—like thirst, a dry mouth, or dark-colored
+urine—to let us know, but by then, dehydration has already begun.
+Find out how much water you need with our Water Intake Calculator,
+so you can keep hydrated and keep your health, energy, and focus
+at their best.{% endblock %}
+
+
+{% block calculator_page_section %}
+  <section class="witable-section">
+    <div class="wi-calc-container">
+      <h1>WI Calculator</h1>
+
+      <form class="calculator">
+        <div>
+          <label class="weight-label" for="weight">Weight (kg)</label>
+          <input
+            type="number"
+            id="weight"
+            min="0"
+            step="any"
+            value="0"
+            inputmode="decimal"
+            onfocus="if (this.value === '0') this.value = ''"
+          />
+        </div>
+
+        <h3>Total Daily Workout Time</h3>
+        <div class="radio-options">
+          <label class="radio-option">
+            <input type="radio" name="workout_time" value="less_than_hour" />
+            Less than an hour
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="workout_time" value="one_hour" />
+            One hour
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="workout_time" value="more_than_hour" />
+            More than an hour
+          </label>
+        </div>
+
+        <div id="additional-hours-container" style="display: none;">
+          <label for="additional-hours">Additional hours:</label>
+          <input type="number" id="additional-hours" min="0" value="0" step="1" />
+        </div>
+
+        <div>
+          <button type="reset">Reset</button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+
+      <section class="output">
+        <h3>Your target daily water intake</h3>
+        <p id="wi">0 Liter</p>
+        <p id="cup">N/A</p>
+      </section>
+    </div>
+  </section>
+{% endblock %}
+
+{% block calculator_page_article %}
+  <h4 class="calculator-article-headline">
+    <strong>Understanding Hydration: Why Water Intake Matters</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Hydration is one of the simplest, yet most essential, practices for
+    maintaining overall health and wellness. Water forms about 60% of the
+    human body, and its distribution across organs plays a crucial role in
+    how we feel and function. For example, water constitutes approximately
+    73% of the heart and brain, 79% of muscles and kidneys, and around 83%
+    of our lungs. Even our bones, often thought of as rigid, contain about
+    31% water. When we’re properly hydrated, our bodies can maintain these
+    levels, ensuring that our cells, organs, and systems operate as they
+    should.<br /><br />However, drinking only when we feel thirsty is not
+    enough. Thirst, dry mouth, or dark-colored urine are signals that
+    dehydration is already in play. By the time we experience thirst, we
+    may have already lost about 1% of our body’s water balance—a
+    percentage that, though small, can have significant impacts on our
+    health and performance. Just a 1% drop can lead to fatigue, reduced
+    cognitive function, and lessened physical performance. To avoid this,
+    it’s best to understand and track your optimal water intake.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>The Risks of Dehydration</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Dehydration, whether mild or severe, affects both our short-term
+    well-being and long-term health. In the short term, our bodies may
+    have to prioritize vital organs when there’s not enough water to go
+    around, affecting functions like brain activity, digestion, and
+    circulation. Left unchecked, dehydration can cause lasting harm to
+    various organs and tissues. Long-term dehydration may lead to severe
+    health issues, including:
+  </p>
+  <ul role="list" class="list">
+    <li><strong>Cognitive impairment and headaches</strong></li>
+    <li>
+      <strong>Muscle atrophy, reducing athletic performance</strong>
+    </li>
+    <li><strong>Premature aging</strong></li>
+    <li><strong>Joint issues and pain</strong></li>
+    <li><strong>Digestive issues, like constipation</strong></li>
+    <li>
+      <strong>Skin problems, including dryness and breakouts</strong>
+    </li>
+    <li><strong>Increased risk of certain cancers</strong></li>
+    <li><strong>Hormonal imbalances</strong></li>
+    <li><strong>Organ damage</strong></li>
+  </ul>
+  <p class="calculator-article-description">
+    These issues are particularly important for active individuals or
+    those living in hot climates, where water loss through sweat is high.
+    Even for those with a more sedentary lifestyle, however, drinking the
+    right amount of water is crucial for maintaining general health and
+    preventing chronic issues.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>Daily Water Requirements: How Much Is Enough?</strong>
+  </h4>
+  <p class="calculator-article-description">
+    A common rule of thumb is to drink eight large glasses of water per
+    day, totaling about 2 liters or half a gallon. However, individual
+    needs vary greatly. Factors like activity level, body weight, climate,
+    and unique health conditions all play into the amount of water one
+    should drink.<br /><br />In general, if you sweat a lot, exercise
+    regularly, or live in a hot environment, you may need more than the
+    average recommendation. Drinking more than enough is usually safe, as
+    any excess water is simply expelled by the body. If you find yourself
+    frequently thirsty or experiencing symptoms of dehydration, it may be
+    time to increase your intake.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>Using a Water Intake Calculator</strong>
+  </h4>
+  <p class="calculator-article-description">
+    A Water Intake Calculator is a helpful tool for determining an
+    individualized daily water goal. The calculator estimates the ideal
+    amount of water based on various factors like age, weight, activity
+    level, and climate. It’s a starting point, giving you a sense of how
+    much water you might need, but you can adjust based on your personal
+    needs. If you find yourself feeling thirsty, consider increasing your
+    intake gradually until you find the right balance.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>Tips for Staying Hydrated</strong>
+  </h4>
+  <ol role="list" class="list">
+    <li>
+      <strong>Spread out your water intake: </strong
+      ><span class="light-span"
+        ><strong
+          >Try to drink regularly throughout the day rather than consuming
+          a large amount all at once.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Eat hydrating foods: </strong
+      ><span class="light-span"
+        ><strong
+          >Many fruits and vegetables, such as cucumbers, watermelons, and
+          oranges, contain a high percentage of water.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Set reminders: </strong
+      ><span class="light-span"
+        ><strong
+          >Use a water-tracking app or set periodic alarms to prompt you
+          to drink.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Keep a water bottle with you: </strong
+      ><span class="light-span"
+        ><strong
+          >A reusable bottle makes it easier to remember to drink,
+          especially when on the go.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Adjust based on your needs: </strong
+      ><span class="light-span"
+        ><strong
+          >Remember that factors like intense exercise, hot weather, and
+          illness may require you to increase your intake.</strong
+        ></span
+      >
+    </li>
+  </ol>
+  <h4 class="calculator-article-headline">
+    <strong>Take Charge of Your Hydration</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Staying properly hydrated is crucial for physical performance, mental
+    clarity, and overall health. By understanding how much water you need
+    and monitoring your intake, you can prevent dehydration and its
+    associated risks. For those who want to dive deeper into understanding
+    their health, check out additional calculators and health metrics to
+    help you stay at your best.
+  </p>
+{% endblock %}

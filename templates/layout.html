@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Beyond The Mindset{% endblock %}</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout-style.css') }}">
+    {% block style %}{% endblock %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
+    <script src="{{ url_for('static', filename='js/main-script.js') }}" type="text/javascript" defer></script>
+    {% block scripts %} {% endblock %}
+  </head>
+
+  <body class="body">
+
+    <!--header-->
+    <div data-animation="default" data-collapse="small" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="main-navbar w-nav">
+      <div class="navbar-wrapper w-container">
+        <a href="{{ url_for('index') }}" class="nav-brand-link w-nav-brand"
+          ><img
+            src="{{ url_for('static', filename='images/btm-logo.png') }}"
+            alt="Beyond The Mindset Logo"
+            width="122"
+            class="nav-brand-img"
+        /></a>
+        <nav role="navigation" class="nav-wrapper w-nav-menu">
+          <a href="{{ url_for('calculators') }}" class="navlink w-nav-link">Health Calculators</a>
+          <a href="{{ url_for('about') }}" class="navlink w-nav-link">About</a>
+        </nav>
+      </div>
+    </div>
+
+    {% block content %} {% endblock %}
+
+    <!--footer-->
+    <section class="footer footer-class">
+      <div class="footer-bg container">
+        <div class="footer-container">
+          <div class="footer-wrapper-two">
+            <a href="{{ url_for('index') }}" class="footer-brand w-inline-block"
+              ><img
+                src="{{ url_for('static', filename='images/btm-logo.png') }}"
+                alt="Behind The Mindset Logo"
+                width="122"
+                class="footer-logo"
+            /></a>
+            <div class="footer-block">
+              <a href="{{ url_for('calculators') }}" class="footer-link-two">Calculators</a>
+              <a href="{{ url_for('about') }}" class="footer-link-two">About</a>
+              <a href="mailto:hamzajaamali@gmail.com" class="footer-link-two">Contact Us</a>
+            </div>
+          </div>
+          <div class="footer-divider-two"></div>
+          <div class="footer-bottom">
+            <div class="footer-love">Made with ❤ | <a href="https://cs50.harvard.edu/"><span class="cs50-span">CS50</span></a> Final Project</div>
+            <div class="social-icons">
+              <a
+                href="https://www.linkedin.com/in/jamalihamza"
+                target="_blank"
+                class="footer-social-link w-inline-block"
+                ><img
+                  src="{{ url_for('static', filename='images/linkedin-icon.png') }}"
+                  alt="LinkedIn Link"
+                  width="256"
+                  class="social-icon"/></a
+              ><a
+                href="https://www.github.com/jamalihamza"
+                target="_blank"
+                class="footer-social-link w-inline-block"
+                ><img
+                  src="{{ url_for('static', filename='images/github-icon.png') }}"
+                  width="256"
+                  sizes="(max-width: 767px) 100vw, 25.000001907348633px"
+                  alt="Github Link"
+                  class="social-icon"/></a
+              ><a
+                href="https://www.instagram.com/twarisko"
+                target="_blank"
+                class="footer-social-link w-inline-block"
+                ><img
+                  src="{{ url_for('static', filename='images/instagram-icon.png') }}"
+                  width="256"
+                  sizes="(max-width: 767px) 100vw, 25.000001907348633px"
+                  alt="Instagram Link"
+                  class="social-icon"/></a
+              ><a
+                href="https://www.x.com/TWARISK0"
+                target="_blank"
+                class="footer-social-link w-inline-block"
+                ><img
+                  src="{{ url_for('static', filename='images/x-icon.png') }}"
+                  width="256"
+                  sizes="(max-width: 767px) 100vw, 25.000001907348633px"
+                  alt="X Link (Formely Twitter)"
+                  class="social-icon"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

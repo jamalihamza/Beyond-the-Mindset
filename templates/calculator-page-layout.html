@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}{% block calculator_title %}Calculator - Beyond The Mindset{% endblock %}{% endblock %}
+
+{% block style %}{% block calculator_style %}{% endblock %}{% endblock %}
+
+{% block scripts %}{% block calculator_script %}{% endblock %}{% endblock %}
+
+{% block content %}
+  <section class="hero-section">
+    <div class="container calculator-hero">
+      <div class="hero-headline-wrapper">
+        <div class="calculator-heading">
+          <h2 class="calculator-title">
+            <strong class="calculator-title-text">{% block calculator_page_title %}{% endblock %}</strong>
+          </h2>
+        </div>
+        <div class="calculator-description">
+          <div class="calculator-description-text">{% block calculator_page_description %}{% endblock %}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% block calculator_page_section %}{% endblock %}
+
+  <section class="calculator-article">
+    <div class="container calculator-article-info">
+      {% block calculator_page_article %}{% endblock %}
+    </div>
+  </section>
+{% endblock %}

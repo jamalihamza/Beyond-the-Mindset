@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found - Beyond The Mindset</title>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/favicon.ico') }}"
+      type="image/x-icon"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+        text-align: center;
+      }
+      .message {
+        background-color: #fff;
+        padding: 40px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+      }
+      h1 {
+        font-size: 2rem;
+        color: #1a1a1a;
+      }
+      p {
+        font-size: 1.2rem;
+        color: #515153;
+      }
+      img {
+        width: 150px;
+        height: 39px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="message">
+      <a href="{{ url_for('index') }}">
+        <img
+          src="{{ url_for('static', filename='images/btm-logo.png') }}"
+          alt="Beyond The Mindset Logo"
+        />
+      </a>
+      <h1>404 - Lost Champ?</h1>
+      <p>See our logo? Hit it to get back!</p>
+    </div>
+  </body>
+</html>

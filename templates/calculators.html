@@ -1,0 +1,180 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}Beyond The Mindset - Calculators{% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='css/calculators-style.css') }}">{% endblock %}
+
+{% block content %}
+  <section class="hero-section">
+    <div class="container calculators-hero">
+      <div class="hero-img-wrapper"></div>
+      <div class="hero-headline-wrapper">
+        <h2><strong>Empower Your Health Journey!</strong></h2>
+        <div class="calculators-description">
+          <div class="calculators-description-text">
+            Discover our range of simple
+            <span class="hero-span">calculators</span> designed to help you
+            understand and manage your
+            <span class="hero-span">health</span> better. From calculating
+            your <span class="hero-span">BMI</span> to estimating your daily
+            <span class="hero-span">calorie needs</span>, these tools provide
+            quick insights that empower you to make informed
+            <span class="hero-span">lifestyle</span> choices.<br/>Stay
+            tuned—more <span class="hero-span">calculators</span> are coming
+            soon to support your
+            <span class="hero-span">health</span> journey!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="calculators-grid-section">
+    <div class="container calculators-card-container">
+      <div class="w-layout-grid calculators-grid">
+
+        <article class="calculator-card">
+          <div class="calculator-card-name calculator-card-name2">
+            <h3 class="calculator-card-title">Sleep Cycle Calculator</h3>
+          </div>
+          <div class="calculator-card-description">
+            <p class="calculator-description">
+              Find your ideal sleep times for a restful night.
+            </p>
+          </div>
+          <div class="calculator-card-cta w-clearfix">
+            <a href="{{ url_for('sleep_cycle_calculator') }}" class="calculator-cta w-button">Calculate Now</a>
+          </div>
+        </article>
+
+        <article class="calculator-card">
+          <div class="calculator-card-name calculator-card-name2">
+            <h3 class="calculator-card-title">BMI Calculator</h3>
+          </div>
+          <div class="calculator-card-description">
+            <p class="calculator-description">
+              Calculate your Body Mass Index quickly.
+            </p>
+          </div>
+          <div class="calculator-card-cta w-clearfix">
+            <a href="{{ url_for('bmi_calculator') }}" class="calculator-cta w-button">Calculate Now</a>
+          </div>
+        </article>
+
+        <article class="calculator-card">
+          <div class="calculator-card-name calculator-card-name2">
+            <h3 class="calculator-card-title">BMR & Calorie Calculator</h3>
+          </div>
+          <div class="calculator-card-description">
+            <p class="calculator-description">
+              Calculate your Basal Metabolic Rate and estimate your daily calorie needs.
+            </p>
+          </div>
+          <div class="calculator-card-cta w-clearfix">
+            <a href="{{ url_for('bmr_calculator') }}" class="calculator-cta w-button">Calculate Now</a>
+          </div>
+        </article>
+
+        <article class="calculator-card">
+          <div class="calculator-card-name calculator-card-name2">
+            <h3 class="calculator-card-title">Ideal Weight Calculator</h3>
+          </div>
+          <div class="calculator-card-description">
+            <p class="calculator-description">
+              Find your healthy weight range.
+            </p>
+          </div>
+          <div class="calculator-card-cta w-clearfix">
+            <a href="{{ url_for('ideal_weight_calculator') }}" class="calculator-cta w-button">Calculate Now</a>
+          </div>
+        </article>
+
+        <article class="calculator-card">
+          <div class="calculator-card-name calculator-card-name2">
+            <h3 class="calculator-card-title">Water Intake Calculator</h3>
+          </div>
+          <div class="calculator-card-description">
+            <p class="calculator-description">
+              Calculate how much water to drink.
+            </p>
+          </div>
+          <div class="calculator-card-cta w-clearfix">
+            <a href="{{ url_for('water_intake_calculator') }}" class="calculator-cta w-button">Calculate Now</a>
+          </div>
+        </article>
+
+        <article class="calculator-card">
+          <div class="calculator-card-name calculator-card-name2">
+            <h3 class="calculator-card-title">Body Fat Pourcentage</h3>
+          </div>
+          <div class="calculator-card-description">
+            <p class="calculator-description">
+              Determine your body fat pourcentage.
+            </p>
+          </div>
+          <div class="calculator-card-cta w-clearfix">
+            <a href="{{ url_for('body_fat_calculator') }}" class="calculator-cta w-button">Calculate Now</a>
+          </div>
+        </article>
+
+        <article class="calculator-card">
+          <div class="calculator-card-name calculator-card-name2">
+            <h3 class="calculator-card-title">Heart Rate Calculator</h3>
+          </div>
+          <div class="calculator-card-description">
+            <p class="calculator-description">
+              Determine your target heart rate.
+            </p>
+          </div>
+          <div class="calculator-card-cta w-clearfix">
+            <a href="{{ url_for('max_heart_rate_calculator') }}" class="calculator-cta w-button">Calculate Now</a>
+          </div>
+        </article>
+
+        <article class="calculator-card">
+          <div class="calculator-card-name calculator-card-name2">
+            <h3 class="calculator-card-title">Lean Body Mass Calculator</h3>
+          </div>
+          <div class="calculator-card-description">
+            <p class="calculator-description">
+              Estimate your lean body mass based on weight and body fat
+            </p>
+          </div>
+          <div class="calculator-card-cta w-clearfix">
+            <a href="{{ url_for('lean_body_mass_calculator') }}" class="calculator-cta w-button">Calculate Now</a>
+          </div>
+        </article>
+
+        <article class="calculator-card">
+          <div class="calculator-card-name calculator-card-name2">
+            <h3 class="calculator-card-title">Macronutrient Calculator</h3>
+          </div>
+          <div class="calculator-card-description">
+            <p class="calculator-description">
+              All-in-one calculator for daily carbs, protein, and fat needs!
+            </p>
+          </div>
+          <div class="calculator-card-cta w-clearfix">
+            <a href="{{ url_for('macronutrient_calculator') }}" class="calculator-cta w-button">Calculate Now</a>
+          </div>
+        </article>
+
+        <article class="calculator-card">
+          <div class="calculator-card-name calculator-card-name2">
+            <h3 class="calculator-card-title">Creatine Calculator</h3>
+          </div>
+          <div class="calculator-card-description">
+            <p class="calculator-description">
+              Determine your optimal creatine dosage based on body weight and goals.
+            </p>
+          </div>
+          <div class="calculator-card-cta w-clearfix">
+            <a href="{{ url_for('creatine_calculator') }}" class="calculator-cta w-button">Calculate Now</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+{% endblock %}

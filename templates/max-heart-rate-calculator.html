@@ -1,0 +1,404 @@
+{% extends 'calculator-page-layout.html' %}
+
+
+{% block calculator_title %}Max Heart Rate Calculator{% endblock %}
+
+{% block calculator_style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/max-heart-rate-style.css') }}"/>
+{% endblock %}
+
+{% block calculator_script %}
+  <script src="{{ url_for('static', filename='js/max-heart-rate-calculator.js') }}" type="text/javascript" defer></script>
+{% endblock %}
+
+
+{% block calculator_page_title %}Maximum Heart Rate Calculator{% endblock %}
+
+{% block calculator_page_description %}Maximize your workouts by understanding your peak heart rate.
+Knowing your maximum heart rate helps you tailor training
+intensity, build endurance, and make the most of every session,
+whether you&#x27;re sprinting, cycling, or lifting. Calculate
+yours today and take control of your fitness journey.{% endblock %}
+
+
+{% block calculator_page_section %}
+  <section class="mhrtable-section">
+    <div class="mhr-calc-container">
+      <h1>MHR Calculator</h1>
+
+      <form class="calculator">
+        <div>
+          <label for="age">Age</label>
+          <input
+            type="number"
+            id="age"
+            min="0"
+            step="any"
+            value="0"
+            inputmode="decimal"
+            onfocus="if (this.value === '0') this.value = ''"
+          />
+        </div>
+
+        <div>
+          <button type="reset">Reset</button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+
+      <section class="output">
+        <h3>Your Maximum Heart Rate is</h3>
+        <p id="mhr">0</p>
+        <p>BPM</p>
+      </section>
+    </div>
+  </section>
+{% endblock %}
+
+{% block calculator_page_article %}
+  <h4 class="calculator-article-headline">
+    <strong>Understanding Your Maximum Heart Rate</strong>
+  </h4>
+  <p class="calculator-article-description">
+    <strong>Max Heart Rate (MHR)</strong> is the highest rate at which
+    your heart can beat during intense physical activity, usually measured
+    in beats per minute (bpm). Knowing this rate is crucial for optimizing
+    workouts, as it provides insight into the right training intensity
+    needed to reach your fitness goals. It is widely used by athletes and
+    fitness enthusiasts for structured training, ensuring the body is
+    working effectively without overexerting.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>Why Knowing Your Max Heart Rate Matters</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Your max heart rate serves as a reference point for defining training
+    zones and gauging workout intensity. By setting your exercise
+    intensity as a percentage of your MHR, you can control your exertion
+    level during a workout. This approach brings several benefits:
+  </p>
+  <ol role="list" class="list">
+    <li>
+      <strong>Goal-Oriented Training: </strong
+      ><span class="light-span"
+        ><strong
+          >Different exercise intensities benefit specific aspects of
+          fitness, like endurance or fat burning. Calculating your max
+          heart rate helps you target the right intensity zone for these
+          goals.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Tracking Progress: </strong
+      ><span class="light-span"
+        ><strong
+          >As you increase your cardiovascular capacity, your body adapts,
+          making it easier to reach target heart rates. By regularly
+          checking your max heart rate, you can monitor improvements in
+          cardiovascular health.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Reducing Overexertion Risks: </strong
+      ><span class="light-span"
+        ><strong
+          >Knowing MHR ensures you&#x27;re training safely. High-intensity
+          workouts can strain the heart if performed without clear
+          parameters, potentially leading to injuries or
+          exhaustion.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Enhancing Recovery: </strong
+      ><span class="light-span"
+        ><strong
+          >Proper intensity helps prevent overtraining, promoting faster
+          recovery and consistent progress over time.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Personalizing Workouts: </strong
+      ><span class="light-span"
+        ><strong
+          >Rather than following a general plan, MHR-based training
+          customizes workouts according to your personal fitness level and
+          goals.</strong
+        ></span
+      >
+    </li>
+  </ol>
+  <h4 class="calculator-article-headline">
+    <strong>Training Zones Based on Max Heart Rate</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Once you know your MHR, you can divide it into training zones that
+    range from light to maximum effort, each serving different fitness
+    objectives:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>Zone 1 (50-60% of MHR): </strong
+      ><span class="light-span"
+        ><strong
+          >Light activity ideal for warm-ups, cooldowns, and recovery.
+          This zone helps with active recovery, fat metabolism, and
+          improves overall stamina.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Zone 2 (60-70% of MHR): </strong
+      ><span class="light-span"
+        ><strong
+          >Primarily targets fat-burning and endurance. It’s perfect for
+          longer sessions, as it improves aerobic fitness without pushing
+          the body too hard.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Zone 3 (71-80% of MHR): </strong
+      ><span class="light-span"
+        ><strong
+          >Enhances aerobic capacity and cardiovascular endurance. This is
+          the “moderate intensity” zone, where the body burns both fat and
+          carbohydrates.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Zone 4 (81-90% of MHR): </strong
+      ><span class="light-span"
+        ><strong
+          >High-intensity zone aimed at boosting anaerobic endurance and
+          speed. Training here strengthens the cardiovascular system,
+          improving performance in high-intensity sports.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Zone 5 (91-100% of MHR): </strong
+      ><span class="light-span"
+        ><strong
+          >Reserved for maximum effort, this zone increases overall peak
+          performance. Exercises in this range are brief and intense,
+          primarily for experienced athletes.</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <p class="calculator-article-description">
+    According to the World Health Organization, obesity is one of the
+    leading preventable causes of death. Excess body fat, especially
+    <strong>visceral fat</strong> (fat around internal organs),
+    significantly raises the risk of:
+  </p>
+  <ol role="list" class="list">
+    <li>
+      <strong>Age-Based Formula<br /></strong
+      ><span class="light-span"
+        ><strong
+          >The age-based formula is the simplest and most widely used
+          approach:<br /><br /></strong></span
+      ><strong>MHR = 220 - Your Age<br /></strong
+      ><span class="light-span"
+        ><strong
+          ><br />For example, a 40-year-old would calculate their max
+          heart rate as: 220 − 40 = 180 bpm<br />‍<br />This method is
+          useful for general estimates, especially when no equipment is
+          available. However, it doesn’t account for personal factors like
+          fitness level or genetics, meaning it may not be perfectly
+          accurate for everyone.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>More Refined Formulas<br /></strong
+      ><span class="light-span"
+        ><strong
+          >Several refined formulas consider additional variables to
+          improve accuracy. One common alternative is the
+        </strong></span
+      ><strong>Tanaka Formula</strong
+      ><span class="light-span"
+        ><strong>:<br />‍<br /></strong></span
+      ><strong>MHR = 208 - (0.7 × Age)<br /></strong
+      ><span class="light-span"
+        ><strong
+          ><br />So, for a 40-year-old, the calculation would be: 208 −
+          (0.7 × 40) = 180 bpm<br /><br />While slight, this adjustment
+          considers the body’s gradual adaptation and changes with age,
+          making it more suitable for middle-aged to older adults.</strong
+        ></span>
+    </li>
+    <li>
+      <strong>Field Testing Your Max Heart Rate<br /></strong
+      ><span class="light-span"
+        ><strong
+          >For a more hands-on and specific calculation, try a field test.
+          These involve high-intensity intervals to push the heart rate to
+          its maximum, making it especially useful for regular athletes
+          and those with experience in intense training. Here’s a
+          step-by-step guide to conduct a field test safely:<br /></strong></span>
+        <ul>
+          <li><strong>Warm-Up:</strong
+        ><span class="light-span"
+          ><strong>
+            Start with a light 10–15-minute warm-up, which could be a light
+            jog or cycle with dynamic stretching to prep your muscles.<br /></strong></span
+        >
+      </li>
+    <li>
+        <strong>Choose an Activity:</strong
+        ><span class="light-span"
+          ><strong>
+            Running or cycling work best for this test, but choose an
+            exercise that aligns with your training. Use a device to measure
+            heart rate.<br /></strong></span
+        >
+      </li>
+    <li>
+      <strong>Interval Sprints:</strong
+        ><span class="light-span"
+          ><strong>
+            Perform 3–4 sets of sprints, where each interval increases in
+            intensity. Aim to reach your maximum on the last sprint, pushing
+            until you feel you can&#x27;t continue.<br /></strong></span
+        >
+      </li>
+    <li>
+    <strong>Monitor Heart Rate:</strong
+        ><span class="light-span"
+          ><strong>
+            Record the highest heart rate achieved. This will serve as your
+            MHR for planning future workouts.</strong
+          ></span>
+      </li>
+      <li>
+        <strong>Clinical Testing for High Accuracy:</strong
+        ><span class="light-span"
+          ><strong
+            > For utmost precision, especially in elite training
+            environments, clinical tests administered by exercise
+            physiologists are ideal. Clinical max heart rate tests involve
+            stress tests, echocardiograms (ECGs), or lab-based cycle
+            ergometer tests. These measurements are conducted under
+            controlled conditions, ensuring the highest accuracy, though
+            they are typically costly and require specialized
+            equipment.</strong
+          ></span>
+      </ul>
+    </li>
+    <li>
+      <strong>Smart Devices and Wearable Trackers<br /></strong
+      ><span class="light-span"
+        ><strong
+          >Today, many smartwatches and fitness trackers offer estimated
+          MHR readings based on biofeedback and activity levels. While not
+          always as accurate as lab tests, these devices provide
+          accessible MHR tracking over time, making it easy to notice
+          trends and improvements in cardiovascular fitness.</strong
+        ></span
+      >
+    </li>
+  </ol>
+  <h4 class="calculator-article-headline">
+    <strong>Key Factors Influencing Maximum Heart Rate</strong>
+  </h4>
+  <p class="calculator-article-description">
+    While MHR naturally declines with age, several personal factors can
+    impact your actual rate:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>Fitness Level:</strong
+      ><span class="light-span"
+        ><strong>
+          Regular cardiovascular training can raise your max heart rate,
+          as your heart becomes more efficient at pumping blood.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Genetics:</strong
+      ><span class="light-span"
+        ><strong>
+          Individual genetic makeup can cause variations in max heart
+          rates, meaning that two people of the same age can have
+          different rates.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Lifestyle Choices:</strong
+      ><span class="light-span"
+        ><strong>
+          Habits such as smoking, diet, and stress can influence heart
+          rate and overall cardiovascular health.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Environment:</strong
+      ><span class="light-span"
+        ><strong>
+          Altitude and temperature can alter heart rate, with higher
+          altitudes and extreme temperatures increasing the workload on
+          the cardiovascular system.</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <h4 class="calculator-article-headline">
+    <strong>Using Your Max Heart Rate for Training</strong>
+  </h4>
+  <p class="calculator-article-description">
+    To incorporate max heart rate into your training:
+  </p>
+  <ol role="list" class="list">
+    <li>
+      <strong>Identify Your Target Zone: </strong
+      ><span class="light-span"
+        ><strong
+          >Based on your fitness goals, determine which heart rate zone
+          you should focus on.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Use a Heart Rate Monitor: </strong
+      ><span class="light-span"
+        ><strong
+          >Consistently check your heart rate during exercise to ensure
+          you’re hitting the intended zone.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Adjust as Needed:</strong
+      ><span class="light-span"
+        ><strong>
+          Monitor your max heart rate every few months. As your fitness
+          improves, you may notice changes in your performance, allowing
+          you to adjust training intensity for continued progress.</strong
+        ></span
+      >
+    </li>
+  </ol>
+  <h4 class="calculator-article-headline"><strong>Final Thoughts</strong></h4>
+  <p class="calculator-article-description">
+    Knowing your max heart rate empowers you to structure workouts, set
+    achievable goals, and train more effectively. While there are several
+    ways to calculate this number, a combination of personal testing and
+    consistent tracking usually works best for non-athletes. Start with
+    the age-based formula or a field test, and adjust based on your
+    progress and fitness level. Remember that max heart rate is one of
+    many valuable fitness metrics; by integrating it into your routine,
+    you’re building a strong foundation for improved endurance, strength,
+    and overall cardiovascular health.
+  </p>
+{% endblock %}

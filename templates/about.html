@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}Beyond The Mindset - About{% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='css/about-style.css') }}">{% endblock %}
+
+{% block content %}
+    <section class="hero-section">
+        <div class="container onlinetests-hero">
+            <div class="hero-img-wrapper"></div>
+            <div data-w-id="d7e66979-579d-016f-50c0-af9a095971d2" class="hero-headline-wrapper">
+                <h2>About Beyond the Mindset</h2>
+            </div>
+        </div>
+    </section>
+    <section class="tests-grid-section">
+        <div class="container about-container">
+            <h4 class="about-info-title">Project Overview</h4>
+            <p class="about-info-description">
+                &quot;<a href="{{ url_for('index') }}"><span class="cta-span">Beyond the Mindset</span></a>&quot; is a web platform designed to empower
+                individuals in managing their physical well-being through specialized
+                health calculators. Currently, users can access tools for assessing
+                health metrics, such as <a href="{{ url_for('bmi_calculator') }}"><span class="cta-span">BMI</span></a>,
+                <a href="{{ url_for('bmr_calculator') }}"><span class="cta-span">BMR</span></a>,
+                 <a href="{{ url_for('body_fat_calculator') }}"><span class="cta-span">body fat percentage</span></a>,
+                 <a href="{{ url_for('sleep_cycle_calculator') }}"><span class="cta-span">sleep cycle</span></a>, and
+                 <a href="{{ url_for('calculators') }}"><span class="cta-span">more</span></a>, with each calculator featuring a dedicated design and
+                explanations for comprehensive insights into individual health.
+            </p>
+            <h4 class="about-info-title">Inspiration</h4>
+            <p class="about-info-description">
+                &quot;<a href="{{ url_for('index') }}"><span class="cta-span">Beyond the Mindset</span></a>&quot; was inspired by a desire to create a
+                reliable, user-centered platform for personal health management. With
+                influences from reputable sources, including <a href="https://www.nhs.uk/"><span class="sites-cta-span">NHS</span></a>,
+                <a href="https://www.nih.gov/"><span class="sites-cta-span">NIH</span></a>,
+                <a href="https://www.hubermanlab.com/"><span class="sites-cta-span">Huberman Lab</span></a>,
+                and <a href="https://www.builtwithscience.com/"><span class="sites-cta-span">Built with Science</span></a>, the project aims to provide an approachable
+                yet powerful resource for understanding and improving health.
+            </p>
+            <h4 class="about-info-title">Features</h4>
+            <ul role="list">
+                <li>
+                    <strong>Health Calculators:</strong> Calculate essential health
+                    metrics such as <a href="{{ url_for('bmi_calculator') }}"><span class="cta-span">BMI</span></a>,
+                    <a href="{{ url_for('bmr_calculator') }}"><span class="cta-span">BMR</span></a>,
+                     <a href="{{ url_for('body_fat_calculator') }}"><span class="cta-span">body fat percentage</span></a>,
+                     <a href="{{ url_for('sleep_cycle_calculator') }}"><span class="cta-span">sleep cycle</span></a>, and
+                     <a href="{{ url_for('calculators') }}"><span class="cta-span">more</span></a>. Each
+                    calculator includes a description, calculation interface, and
+                    relevant health articles to deepen user understanding.
+                </li>
+                <li>
+                    <strong>Unique Design for Each Calculator:</strong> Each health
+                    calculator is designed with its own CSS and JavaScript, ensuring a
+                    streamlined and user-friendly experience.
+                </li>
+            </ul>
+            <h4 class="about-info-title">Technologies Used</h4>
+            <ul role="list">
+                <li>
+                    <strong>Frontend Design:</strong> Developed with <a href="https://webflow.com/"><span class="sites-cta-span">Webflow</span></a> to ensure a
+                    professional and dynamic user experience.
+                </li>
+                <li><strong>Backend:</strong> Developed using Flask on <a href="https://cs50.dev/"><span class="sites-cta-span">CS50.dev</span></a>.</li>
+                <li>
+                    <strong>JavaScript &amp; CSS:</strong> Custom styling and
+                    functionality for each calculator.
+                </li>
+                <li>
+                    <strong>Resources &amp; Inspiration:</strong><br /><br />
+                    <ul>
+                        <li><a href="https://refinedguides.com/"><span class="sites-cta-span">Refined Guides</span></a>, as an inspiration for BMI and BMR calculators</li>
+                        <li><a href="https://gymnation.com/"><span class="sites-cta-span">GymNation</span></a>, <a href="https://calculator.net/"><span class="sites-cta-span">Calculator.net</span></a> for further health calculator ideas.</li>
+                    </ul>
+                </li>
+            </ul>
+            <h4 class="about-info-title">Future Improvements</h4>
+            <p class="about-info-description">
+                Planned expansions for &quot;<a href="{{ url_for('index') }}"><span class="cta-span">Beyond the Mindset</span></a>&quot; include
+                interactive mental health assessments, a blog repository focused on
+                health and wellness topics, and comprehensive user profiles for
+                progress tracking. These enhancements aim to provide a full spectrum
+                of wellness tools, ultimately transforming the platform into an
+                all-encompassing resource for mental and physical health.
+            </p>
+            <h4 class="about-info-title">Acknowledgments</h4>
+            <p class="about-info-description">
+                Special thanks to <a href="https://webflow.com/"><span class="sites-cta-span">Webflow</span></a> for design support and to
+                <a href="https://refinedguides.com/"><span class="sites-cta-span">Refined Guides</span></a>
+                (<a href="https://github.com/refinedguides"><span class="github-sites-cta-span">GitHub</span></a>,
+                <a href="https://www.youtube.com/@refinedguides"><span class="youtube-sites-cta-span">YouTube</span></a>) for inspiration on <a href="https://refinedguides.com/bmi-calculator/"><span class="sites-cta-span">BMI</span></a>
+                and <a href="https://refinedguides.com/bmr-calculator/"><span class="sites-cta-span">BMR</span></a> calculators.
+                Additional credit to logo creator Ahmed JAMALI (<a href="https://www.linkedin.com/in/ahmed-jamali/"><span class="sites-cta-span">LinkedIn</span></a>).
+            </p>
+        </div>
+    </section>
+{% endblock %}

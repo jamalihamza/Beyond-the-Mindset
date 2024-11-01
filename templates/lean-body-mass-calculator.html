@@ -1,0 +1,314 @@
+{% extends 'calculator-page-layout.html' %}
+
+
+{% block calculator_title %}Lean Body Mass Calculator{% endblock %}
+
+{% block calculator_style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lean-body-mass-style.css') }}"/>
+{% endblock %}
+
+{% block calculator_script %}
+  <script src="{{ url_for('static', filename='js/lean-body-mass-calculator.js') }}" type="text/javascript" defer></script>
+{% endblock %}
+
+
+{% block calculator_page_title %}Lean Body Mass Calculator{% endblock %}
+
+{% block calculator_page_description %}Knowing your lean body mass (LBM)—the weight of everything in your
+body except fat—can be invaluable for anyone setting specific
+health or fitness goals. Tracking your LBM is a key measure in
+understanding your body composition and planning effective
+strategies for muscle gain, fat loss, or weight maintenance.{% endblock %}
+
+
+{% block calculator_page_section %}
+  <section class="lbmtable-section">
+    <div class="lbm-calc-container">
+      <h1>LBM Calculator</h1>
+
+      <form class="calculator">
+        <div>
+          <label for="weight">Weight (kg)</label>
+          <input
+            type="number"
+            id="weight"
+            min="0"
+            step="any"
+            value="0"
+            inputmode="decimal"
+            onfocus="if (this.value === '0') this.value = ''"
+          />
+        </div>
+
+        <div>
+          <label for="bfp">Body Fat Percentage</label>
+          <input
+            type="number"
+            id="bfp"
+            min="0"
+            step="any"
+            value="0"
+            inputmode="decimal"
+            onfocus="if (this.value === '0') this.value = ''"
+          />
+        </div>
+
+        <div>
+          <button type="reset">Reset</button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+
+      <section class="output">
+        <h3>Your lean body mass is</h3>
+        <p id="lbm">0 kg</p>
+      </section>
+
+    </div>
+  </section>
+{% endblock %}
+
+{% block calculator_page_article %}
+  <h4 class="calculator-article-headline">
+    <strong>Why Should You Measure Lean Body Mass?</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Lean Body Mass is more than just a number. It’s a measure of your
+    body’s muscle, bone, water, and tissue content minus body fat,
+    providing a more accurate picture of body composition than simple
+    weight or BMI. For those working on health, fitness, or aesthetic
+    goals, LBM allows for a detailed assessment of progress. For example,
+    if you’re focused on fat loss, you’ll want to see that your LBM
+    remains stable as you lose weight. This indicates that you’re
+    primarily losing fat, not muscle or bone density. On the other hand,
+    if you’re focused on gaining muscle, tracking LBM can help you ensure
+    that your gains are lean muscle rather than excess fat.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>What Is Lean Body Mass?</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Lean Body Mass is the total weight of your body minus all fat. This
+    includes bones, muscles, organs, and water. Knowing your LBM offers
+    insight into your body’s composition, helping you optimize your
+    workout routines, diet plans, and even health goals. Unlike BMI, which
+    only compares your height and weight, LBM is a more precise measure.
+    It’s especially useful for people with fitness or body composition
+    goals, as it allows them to track changes in muscle mass versus body
+    fat over time.
+  </p>
+  <p class="calculator-article-description">
+    Calculating LBM can help you tailor your fitness plan by:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong
+        >Ensuring you’re preserving muscle mass while losing fat.</strong
+      >
+    </li>
+    <li>
+      <strong
+        >Tracking muscle gain without the added confusion of increased
+        fat.</strong
+      >
+    </li>
+    <li>
+      <strong
+        >Maintaining a clear view of progress, which is often lost when
+        only monitoring weight.</strong
+      >
+    </li>
+  </ul>
+  <h4 class="calculator-article-headline">
+    <strong>How Is Lean Body Mass Calculated?</strong>
+  </h4>
+  <p class="calculator-article-description">
+    There are a couple of ways to calculate LBM, each with varying levels
+    of accessibility and accuracy.
+  </p>
+  <ol role="list" class="list">
+    <li>
+      <strong>Using Weight and Height<br /></strong>
+      <span class="light-span">
+        This is the simplest way to estimate LBM, requiring only height and weight. The formulas are:<br /><br />
+      </span>
+      <ul>
+        <li>
+          <strong>For Men:</strong>
+          <span class="light-span">
+            Lean Body Mass = (0.32810 × Weight in kg) + (0.33929 × Height in cm) - 29.5336
+          </span>
+        </li>
+        <li>
+          <strong>For Women:</strong>
+          <span class="light-span">
+            Lean Body Mass = (0.29569 × Weight in kg) + (0.41813 × Height in cm) - 43.2933
+          </span>
+        </li>
+      </ul>
+      <span class="light-span">
+        While straightforward, this method is somewhat general and less precise than calculations that factor in body fat percentage.
+      </span>
+    </li>
+
+    <li>
+      <strong>Using <a href="{{ url_for('body_fat_calculator') }}"><span class="cta-span">Body Fat Percentage</span></a><br /></strong>
+      <span class="light-span">
+        A more accurate approach to calculating LBM involves knowing your body fat percentage. Here’s how it works:<br /><br />
+      </span>
+      <ol>
+        <li>
+          <strong>Calculate Fat Mass:</strong>
+          <span class="light-span">
+            Multiply your body fat percentage (converted to decimal form) by your total weight. For instance, if you weigh 80kg and your body fat percentage is 15%, multiply 80 by 0.15 to get 12kg of fat mass.
+          </span>
+        </li>
+        <li>
+          <strong>Subtract Fat Mass:</strong>
+          <span class="light-span">
+            Subtract this result from your total weight. Using the example above, 80kg - 12kg = 68kg of lean body mass.
+          </span>
+        </li>
+      </ol>
+      <span class="light-span">
+        This method is more reliable but requires knowing your body fat percentage, which may require a separate assessment.
+      </span>
+    </li>
+
+  </ol>
+  <h4 class="calculator-article-headline">
+    <strong>Methods for Determining <a href="{{ url_for('body_fat_calculator') }}"><span class="cta-span">Body Fat Percentage</span></a></strong>
+  </h4>
+  <p class="calculator-article-description">
+    To get an accurate calculation of your lean body mass using body fat
+    percentage, you need a reliable measure of your body fat. Here are
+    some common methods:
+  </p>
+  <ol role="list" class="list">
+    <li>
+      <strong>Skinfold Calipers<br /></strong
+      ><span class="light-span"
+        ><strong
+          >This is one of the most accessible ways to measure body fat. A
+          trained professional pinches the skin at various sites on your
+          body and measures the thickness with calipers, which can then be
+          input into a calculator to get body fat percentage. This method
+          is convenient and commonly available at gyms but can vary in
+          accuracy based on the skill of the person taking
+          measurements.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Bioelectrical Impedance Analysis (BIA)<br /></strong
+      ><span class="light-span"
+        ><strong
+          >Many gyms and health clinics use bioelectrical impedance
+          devices. These scales send a small, safe electrical current
+          through your body, which encounters varying levels of resistance
+          from fat and muscle. This resistance provides an estimate of
+          body fat percentage. However, BIA accuracy can fluctuate based
+          on factors like hydration levels.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Hydrostatic Weighing<br />‍</strong
+      ><span class="light-span"
+        ><strong
+          >Known as underwater weighing, this method is highly accurate
+          but less accessible to the general public. It compares your
+          weight on land to your weight fully submerged in water, allowing
+          technicians to calculate your body fat percentage. It’s highly
+          reliable but often expensive and not readily available.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Dual-Energy X-ray Absorptiometry (DEXA)<br />‍</strong
+      ><span class="light-span"
+        ><strong
+          >DEXA scans are the gold standard in body composition analysis,
+          providing detailed readings of muscle, fat, and bone mass. This
+          method is usually only available in clinical or research
+          settings and can be costly. However, it’s incredibly accurate
+          for determining body fat percentage.</strong
+        ></span
+      >
+    </li>
+  </ol>
+  <h4 class="calculator-article-headline">
+    <strong>Benefits of Knowing Your Lean Body Mass</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Understanding your lean body mass allows for a targeted approach to
+    fitness and health:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>Optimized Fat Loss: </strong
+      ><span class="light-span"
+        ><strong
+          >If you’re trying to lose weight, maintaining or increasing LBM
+          is ideal. By tracking it, you can ensure that weight loss is
+          coming from fat rather than muscle.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Effective Muscle Gain: </strong
+      ><span class="light-span"
+        ><strong
+          >For those aiming to build muscle, lean body mass calculations
+          are invaluable. If your overall weight increases in tandem with
+          your lean body mass, you know you’re gaining muscle rather than
+          fat.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Improved Health Metrics: </strong
+      ><span class="light-span"
+        ><strong
+          >LBM tracking can also inform health assessments. For example, a
+          consistent lean mass supports metabolism and reduces the risk of
+          conditions like osteoporosis.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Balanced Diet and Exercise Plans: </strong
+      ><span class="light-span"
+        ><strong
+          >Knowing LBM can help guide nutrient intake, especially protein,
+          which supports muscle growth and maintenance. It also informs
+          exercise routines, especially strength training.</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <h4 class="calculator-article-headline">
+    <strong>Tools for Measuring Lean Body Mass</strong>
+  </h4>
+  <p class="calculator-article-description">
+    While formulas are handy, online LBM calculators offer a quick,
+    user-friendly option. Simply input your height, weight, and (if
+    available) <a href="{{ url_for('body_fat_calculator') }}"><span class="cta-span">body fat percentage</span></a> for an accurate estimate.
+  </p>
+  <h4 class="calculator-article-headline"><strong>Conclusion</strong></h4>
+  <p class="calculator-article-description">
+    Tracking lean body mass is a useful addition to any health or fitness
+    regimen. By differentiating between body fat and lean tissue, LBM
+    offers insights that go beyond simple weight measurements or BMI,
+    enabling a focused approach to health goals. Whether you’re aiming to
+    reduce fat, build muscle, or maintain your current body composition,
+    understanding your LBM is a step toward a healthier, more balanced
+    body.
+  </p>
+  <p class="calculator-article-description">
+    Lean Body Mass isn’t just a number; it’s a dynamic metric that can
+    help shape a healthier, stronger, more resilient you. Use our
+    calculator to measure your LBM and take control of your fitness
+    journey today.
+  </p>
+{% endblock %}

@@ -1,0 +1,287 @@
+{% extends 'calculator-page-layout.html' %}
+
+
+{% block calculator_title %}Sleep Cycle Calculator{% endblock %}
+
+{% block calculator_style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sleep-style.css') }}"/>
+{% endblock %}
+
+{% block calculator_script %}
+  <script src="{{ url_for('static', filename='js/sleep-calculator.js') }}" type="text/javascript" defer></script>
+{% endblock %}
+
+
+{% block calculator_page_title %}Sleep Cycle Calculator{% endblock %}
+
+{% block calculator_page_description %}Maximize your rest with our Sleep Cycle Calculator! Discover
+optimal bedtimes and wake-up times to ensure you wake up
+refreshed, aligning your sleep schedule with your body&#x27;s
+natural rhythms.{% endblock %}
+
+
+{% block calculator_page_section %}
+  <section class="sleeptable-section">
+    <div class= "sleep-calc-container" id="calculator">
+      <h1>Sleep Cycle Calculator</h1>
+      <form id="sleepForm">
+          <!-- Radio Options -->
+          <label>
+              <input type="radio" name="option" value="wake" id="wakeOption" required>
+              I want to Wake Up at
+          </label>
+          <div id="wakeTimeInputs" style="display:none;">
+              <input type="number" id="wakeHour" name="wakeHour" min="1" max="12" placeholder="Hour">
+              <b>:</b>
+              <input type="number" id="wakeMinute" name="wakeMinute" min="0" max="59" placeholder="Minute">
+              <select id="wakeAmPm" name="wakeAmPm">
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+              </select>
+          </div>
+
+          <label>
+              <input type="radio" name="option" value="bed" id="bedOption" required>
+              I want to go to Bed at
+          </label>
+          <div id="bedTimeInputs" style="display:none;">
+              <input type="number" id="bedHour" name="bedHour" min="1" max="12" placeholder="Hour">
+              <b>:</b>
+              <input type="number" id="bedMinute" name="bedMinute" min="0" max="59" placeholder="Minute">
+              <select id="bedAmPm" name="bedAmPm">
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+              </select>
+
+              <!-- Dynamic Buttons -->
+              <div id="timeButtons">
+                  <span id="nowButton">Now</span>
+                  <span id="thirtyMinLater">30 minutes later</span>
+                  <span id="oneHourLater">1 hour later</span>
+              </div>
+          </div>
+
+          <div id="formButtons">
+
+              <button id="settingsBtn" type="button">Settings</button>
+              <button type="submit">Submit</button>
+          </div>
+      </form>
+
+      <!-- Settings Button and Panel -->
+      <div id="settingsPanel" style="display:none; margin-top: 10px;">
+          <label for="cycleLength">My sleep cycle length is</label>
+          <input type="number" id="cycleLength" name="cycleLength" min="1" value="90"> minutes
+
+          <label for="fallAsleepTime">It takes me</label>
+          <input type="number" id="fallAsleepTime" name="fallAsleepTime" min="0" value="15"> minutes to fall
+          asleep
+      </div>
+
+      <div class="sleep-results" id="results">
+          <div class="highlighted-cycles" id="highlighted-cycles" style="display:none;">
+              <h3 id="highlighted-message"></h3>
+              <div id="cycle-5-and-6">
+                  <span class="cycle" id="cycle-5"></span> —
+                  <span class="cycle" id="cycle-6"></span>
+              </div>
+              <h3>With different arrangements, you may choose one of the following times:</h3>
+              <ul class="sleep-times" id="suggested-times"></ul>
+          </div>
+      </div>
+  </div>
+  </section>
+{% endblock %}
+
+{% block calculator_page_article %}
+  <h4 class="calculator-article-headline">
+    <strong>Understanding Your Sleep Cycles</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Have you ever wondered why some mornings you leap out of bed feeling
+    refreshed while on others you struggle to wake up? The answer often
+    lies in your sleep cycles, which have a profound impact on your mood,
+    cognitive function, and overall health. Proper sleep is crucial, not
+    only for mental clarity but also for physical well-being.
+  </p>
+  <p class="calculator-article-description">
+    The Sleep Cycle Calculator is designed to help you determine the ideal
+    times to fall asleep and wake up based on your sleep patterns. By
+    using recommendations from health experts, this tool provides insights
+    into how many sleep cycles you might achieve and how to optimize your
+    rest.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>The Importance of Sleep Cycles</strong>
+  </h4>
+  <p class="calculator-article-description">
+    A complete sleep cycle typically lasts between 90 to 110 minutes and
+    consists of various stages, including light sleep, deep sleep, and REM
+    (Rapid Eye Movement) sleep. Each cycle is essential for different
+    aspects of restoration, memory consolidation, and emotional
+    regulation. For optimal health, most adults should aim for 4 to 6 full
+    cycles per night.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>How the Sleep Cycle Calculator Works</strong>
+  </h4>
+  <p class="calculator-article-description">
+    To utilize the Sleep Cycle Calculator, simply input your desired
+    wake-up time or bedtime. The calculator will then suggest the best
+    times to fall asleep, considering the number of sleep cycles you are
+    likely to complete. This personalized approach can significantly
+    enhance the quality of your sleep.
+  </p>
+  <p class="calculator-article-description"><strong>For Example:</strong></p>
+  <ul role="list" class="list">
+    <li>
+      <span class="light-span"
+        ><strong
+          >If you want to wake up at 6:00 AM, the calculator will
+          recommend a bedtime that aligns with completing full sleep
+          cycles, helping you feel more energized in the morning.</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <h4 class="calculator-article-headline">
+    <strong>Timing Your Sleep for Better Quality</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Establishing a consistent sleep schedule is vital for maintaining a
+    healthy circadian rhythm. Going to bed and waking up at the same time
+    every day reinforces your body’s internal clock, enhancing your sleep
+    quality. Consistency is key—try to stick to your sleep schedule even
+    on weekends.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>Understanding Sleep Stages:</strong>
+  </h4>
+  <ul role="list" class="list">
+    <li>
+      <strong>Stage 1 (Light Sleep): </strong
+      ><span class="light-span"
+        ><strong
+          >The transition phase where you drift in and out of sleep.
+          It&#x27;s easy to wake from this stage, making it a natural
+          point to get up.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Stage 2 (Moderate Sleep): </strong
+      ><span class="light-span"
+        ><strong
+          >You’re less aware of your surroundings, and your body begins to
+          relax significantly. This stage is crucial for memory
+          consolidation.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Stage 3 (Deep Sleep): </strong
+      ><span class="light-span"
+        ><strong
+          >This stage is essential for physical recovery. Your heart rate
+          and blood pressure drop, allowing your body to repair
+          itself.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>REM Sleep: </strong
+      ><span class="light-span"
+        ><strong
+          >Occurring at the end of each cycle, this stage is crucial for
+          mental and emotional health. It’s where dreaming occurs, and
+          your brain consolidates memories.</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <h4 class="calculator-article-headline">
+    <strong>Optimizing Your Sleep Cycles</strong>
+  </h4>
+  <p class="calculator-article-description">
+    To get the most out of your sleep cycles, aim to complete at least 4-6
+    full cycles per night. This approach helps to minimize feelings of
+    grogginess upon waking. Here are some tips to improve your sleep
+    quality:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>Establish a Regular Sleep Schedule: </strong
+      ><span class="light-span"
+        ><strong
+          >Go to bed and wake up at the same times every day.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Create a Pre-Sleep Routine: </strong
+      ><span class="light-span"
+        ><strong
+          >Engage in relaxing activities before bed, like reading or
+          taking a warm bath.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Craft a Sleep-Inducing Environment: </strong
+      ><span class="light-span"
+        ><strong>Keep your bedroom cool, dark, and quiet.</strong></span
+      >
+    </li>
+    <li>
+      <strong>Limit Stimulants: </strong
+      ><span class="light-span"
+        ><strong
+          >Avoid caffeine, nicotine, and heavy meals before
+          bedtime.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Stay Active: </strong
+      ><span class="light-span"
+        ><strong
+          >Regular physical activity can enhance sleep quality, but avoid
+          intense workouts close to bedtime.</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <h4 class="calculator-article-headline">
+    <strong>Effects of Sleep Deprivation</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Lack of adequate sleep can lead to several health issues, including
+    fatigue, irritability, and impaired cognitive function. Over time,
+    chronic sleep deprivation increases the risk of more serious
+    conditions like obesity, heart disease, and mental health disorders.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>How the Sleep Cycle Calculator Can Help</strong>
+  </h4>
+  <p class="calculator-article-description">
+    By using the Sleep Cycle Calculator, you can take control of your
+    sleep hygiene. Planning your bedtime and wake time according to your
+    sleep cycles ensures that you wake up during lighter sleep stages,
+    which can improve your overall well-being. Consistency in your sleep
+    schedule is linked to better health outcomes, including reduced risks
+    of chronic diseases.
+  </p>
+  <h4 class="calculator-article-headline"><strong>Conclusion</strong></h4>
+  <p class="calculator-article-description">
+    Understanding and calculating your sleep patterns can make a
+    significant difference in how you feel each day. The Sleep Cycle
+    Calculator is a valuable tool to help you align your sleep schedule
+    with your body&#x27;s needs, ultimately leading to improved energy
+    levels, mood, and health.
+  </p>
+  <p class="calculator-article-description">
+    Try the Sleep Cycle Calculator today and discover how small
+    adjustments to your sleep schedule can lead to big improvements in
+    your life.
+  </p>
+{% endblock %}

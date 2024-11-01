@@ -1,0 +1,306 @@
+{% extends 'calculator-page-layout.html' %}
+
+
+{% block calculator_title %}Macronutrient Calculator{% endblock %}
+
+{% block calculator_style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/macronutrient-style.css') }}"/>
+{% endblock %}
+
+{% block calculator_script %}
+  <script src="{{ url_for('static', filename='js/macronutrient-calculator.js') }}" type="text/javascript" defer></script>
+{% endblock %}
+
+
+{% block calculator_page_title %}Macronutrient Calculator{% endblock %}
+
+{% block calculator_page_description %}Understanding and managing your macronutrient intake is crucial
+for achieving your health and fitness goals. This calculator
+provides personalized recommendations for fat, protein, and
+carbohydrate intake based on your unique lifestyle and biometric
+factors. Whether you&#x27;re aiming for muscle gain, weight loss,
+or improved performance, proper macronutrient ratios will
+significantly impact your body composition, energy levels, and
+overall well-being.{% endblock %}
+
+
+{% block calculator_page_section %}
+  <section class="macrotable-section">
+    <div class="macro-calc-container">
+      <h1>Macronutrient Calculator</h1>
+      <form id="calculator">
+        <div>
+          <label for="height">Height (cm)</label>
+          <input type="number" id="height" placeholder="Height in cm" min="0" value="0" step="0.01">
+        </div>
+        <div>
+          <label for="weight">Weight (kg)</label>
+          <input type="number" id="weight" placeholder="Weight in kg" min="0" value="0" step="0.01">
+        </div>
+        <div>
+          <label for="age">Age</label>
+          <input type="number" id="age" placeholder="Age" min="0" value="0">
+        </div>
+        <div>
+          <label for="gender">Gender</label>
+          <select id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+
+        <!-- Radio buttons for activity level -->
+        <fieldset>
+          <legend>Activity Level</legend>
+          <label>
+            <input type="radio" name="activity" value="sedentary">
+            Sedentary (0-1 days/week)
+          </label>
+          <label>
+            <input type="radio" name="activity" value="lightly_active">
+            Lightly Active (1-3 days/week)
+          </label>
+          <label>
+            <input type="radio" name="activity" value="moderately_active">
+            Moderately Active (4-5 days/week)
+          </label>
+          <label>
+            <input type="radio" name="activity" value="very_active">
+            Very Active (6-7 days/week)
+          </label>
+        </fieldset>
+
+        <!-- Radio buttons for goal -->
+        <fieldset>
+          <legend>Goal</legend>
+          <label>
+            <input type="radio" name="goal" value="lose_weight">
+            Lose Weight
+          </label>
+          <label>
+            <input type="radio" name="goal" value="maintain_weight">
+            Maintain Weight
+          </label>
+          <label>
+            <input type="radio" name="goal" value="gain_weight">
+            Gain Weight
+          </label>
+        </fieldset>
+
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+      </form>
+
+      <div id="result">
+        <div class="daily-macros">
+          <h3>Macronutrient Results</h3>
+          <ul class="macro-levels">
+            <li><p><strong>Carbohydrates</strong></p><span class="value" id="carbs">0 g</span></li>
+            <li><p><strong>Protein</strong></p><span class="value" id="protein">0 g</span></li>
+            <li><p><strong>Fats</strong></p><span class="value" id="fats">0 g</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block calculator_page_article %}
+  <h4 class="calculator-article-headline">
+    <strong>Understanding Macronutrients</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Macronutrients are the nutrients that provide us with energy
+    (calories) and are essential for the body’s daily functions. There are
+    three primary macronutrients:
+  </p>
+  <ol role="list" class="list">
+    <li>
+      <strong>Carbohydrates: </strong
+      ><span class="light-span"
+        ><strong
+          >The body&#x27;s main energy source, necessary for fueling
+          physical activity and supporting brain function.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Proteins: </strong
+      ><span class="light-span"
+        ><strong
+          >Essential for building and repairing tissues, proteins are
+          critical for muscle recovery and growth.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Fats: </strong
+      ><span class="light-span"
+        ><strong
+          >Necessary for hormone production, nutrient absorption, and
+          providing sustained energy, fats play a crucial role in overall
+          health.</strong
+        ></span
+      >
+    </li>
+  </ol>
+  <p class="calculator-article-description">
+    Achieving a balanced intake of these macronutrients can greatly affect
+    body composition, performance in the gym, and overall health.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>The Importance of Macronutrient Ratios</strong>
+  </h4>
+  <p class="calculator-article-description">
+    While many people focus solely on caloric intake—believing that weight
+    management is simply a matter of calories in versus calories out—this
+    perspective is overly simplistic. The ratio of macronutrients in your
+    diet is just as important, influencing energy levels, metabolism, and
+    how the body utilizes calories.
+  </p>
+  <p class="calculator-article-description">
+    <span
+      ><strong>Flexible Dieting and IIFYM (If It Fits Your Macros)</strong
+      >:</span
+    >
+    Flexible dieting has gained popularity as an approach that allows
+    individuals to enjoy a wider variety of foods while still achieving
+    their fitness goals. This method emphasizes hitting daily
+    macronutrient targets rather than adhering to strict dietary rules. As
+    long as you meet your daily goals for carbohydrates, proteins, and
+    fats, you can enjoy your favorite foods.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>Using a Macronutrient Calculator</strong>
+  </h4>
+  <p class="calculator-article-description">
+    A macronutrient calculator is an essential tool for anyone looking to
+    optimize their nutrition based on their specific health and fitness
+    goals. It provides personalized recommendations for the amount of each
+    macronutrient you should consume daily.
+  </p>
+  <p class="calculator-article-description">Here’s how it typically works:</p>
+  <ol role="list" class="list">
+    <li>
+      <strong>Input Your Biometric Information: </strong
+      ><span class="light-span"
+        ><strong
+          >You&#x27;ll need to enter key details such as your height,
+          weight, age, gender, and activity level.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Determine Your Goals: </strong
+      ><span class="light-span"
+        ><strong
+          >Specify your fitness objectives, whether it&#x27;s weight loss,
+          muscle gain, or maintenance.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Calculate Your Basal Metabolic Rate (BMR): </strong
+      ><span class="light-span"
+        ><strong
+          >Using the Harris-Benedict formula, the calculator will estimate
+          the number of calories you burn at rest.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Adjust for Activity Level: </strong
+      ><span class="light-span"
+        ><strong
+          >The calculator will factor in your activity level to determine
+          your total daily energy expenditure (TDEE).</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Receive Macronutrient Targets: </strong>
+      <span class="light-span">
+        <strong>Based on your goals and TDEE, the calculator will provide suggested daily intake percentages for each macronutrient. For example:</strong>
+        <strong>
+          <ul>
+            <li>Carbs: 50%</li>
+            <li>Protein: 30%</li>
+            <li>Fat: 20%</li>
+          </ul>
+        </strong>
+        <br />
+        <strong>For a 2,400-calorie diet, this translates to:</strong>
+        <strong>
+          <ul>
+            <li>1,200 calories from carbohydrates</li>
+            <li>720 calories from protein</li>
+            <li>480 calories from fat</li>
+          </ul>
+        </strong>
+        <br />
+        <strong>When broken down into grams:</strong>
+        <strong>
+          <ul>
+            <li>300 grams of carbohydrates (1,200 calories / 4 calories/gram)</li>
+            <li>180 grams of protein (720 calories / 4 calories/gram)</li>
+            <li>54 grams of fat (480 calories / 9 calories/gram)</li>
+          </ul>
+        </strong>
+      </span>
+    </li>
+
+  </ol>
+  <h4 class="calculator-article-headline">
+    <strong>Putting It Into Practice</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Once you have your macronutrient targets, the next step is to plan
+    your meals accordingly.
+  </p>
+  <ol role="list" class="list">
+    <li>
+      <strong>Meal Planning: </strong
+      ><span class="light-span"
+        ><strong
+          >Start by selecting foods that will help you hit your daily
+          macronutrient goals. It may take some time to figure out which
+          foods fit your needs, but several apps and websites can help
+          track your intake and ensure you&#x27;re meeting your
+          targets.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Adjust as Needed: </strong
+      ><span class="light-span"
+        ><strong
+          >Monitor your progress and adjust your macronutrient ratios
+          based on how your body responds. Everyone&#x27;s needs are
+          unique, and what works for one person may not work for
+          another.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Stay Consistent: </strong
+      ><span class="light-span"
+        ><strong
+          >The key to success in any nutrition plan is consistency. Stick
+          to your goals, and remember that achieving your desired results
+          takes time and dedication.</strong
+        ></span
+      >
+    </li>
+  </ol>
+  <h4 class="calculator-article-headline"><strong>Conclusion</strong></h4>
+  <p class="calculator-article-description">
+    Macronutrients are the foundation of any successful nutrition
+    strategy. Whether your aim is to lose weight, gain muscle, or maintain
+    your current physique, understanding and optimizing your macronutrient
+    intake will significantly impact your overall health and performance.
+    Using a macronutrient calculator is a straightforward way to
+    personalize your dietary approach and ensure you&#x27;re fueling your
+    body correctly. Start your journey towards better health and fitness
+    by taking control of your macronutrient intake today!
+  </p>
+{% endblock %}

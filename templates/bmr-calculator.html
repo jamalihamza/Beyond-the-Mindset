@@ -1,0 +1,488 @@
+{% extends 'calculator-page-layout.html' %}
+
+
+{% block calculator_title %}BMR & Daily Energy Needs Calculator{% endblock %}
+
+{% block calculator_style %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bmr-style.css') }}"/>
+{% endblock %}
+
+{% block calculator_script %}
+  <script src="{{ url_for('static', filename='js/bmr-calculator.js') }}" type="text/javascript" defer></script>
+{% endblock %}
+
+
+{% block calculator_page_title %}BMR &amp; Daily Energy Needs Calculator{% endblock %}
+
+{% block calculator_page_description %}Calculate your Basal Metabolic Rate (BMR) and daily energy needs
+to maintain your ideal weight and support your health goals. Enter
+your details to understand how many calories your body requires at
+rest and during daily activities.{% endblock %}
+
+
+{% block calculator_page_section %}
+  <section class="bmrtable-section">
+    <div class="bmr-calc-container">
+        <h1>BMR/Calorie Calculator</h1>
+
+        <form id="calculator">
+          <div>
+            <label for="height">Height (cm)</label>
+            <input type="number" id="height" placeholder="Height in cm" min="0" value="0" step="0.01">
+          </div>
+          <div>
+            <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" placeholder="Weight in kg" min="0" value="0" step="0.01">
+          </div>
+          <div>
+            <label for="age">Age</label>
+            <input type="number" id="age" placeholder="Age" min="0" value="0">
+          </div>
+          <div>
+            <label for="gender">Gender</label>
+            <select id="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <button type="reset">Reset</button>
+          <button type="submit">Submit</button>
+        </form>
+
+        <div id="result">
+
+          <div class="bmr">
+            <span>BMR</span>
+            <h2 id="bmr">0</h2>
+            <p>kcal/day</p>
+          </div>
+
+          <div class="daily-calories">
+            <h3>Daily Calorie Needs</h3>
+
+            <ul class="activity-levels">
+              <li class="lli">
+                <p>
+                  <strong class="name">Sedentary</strong>
+                  <small class="desc">Little to no exercise</small>
+                </p>
+                <span class="value" id="sedentary">0</span>
+              </li>
+              <li class="lli">
+                <p>
+                  <strong class="name">Lightly Active</strong>
+                  <small class="desc">Light exercise or sports (1-3 days/week)</small>
+                </p>
+                <span class="value" id="light">0</span>
+              </li>
+              <li class="lli">
+                <p>
+                  <strong class="name">Moderately Active</strong>
+                  <small class="desc">Moderate exercise or sports (4-5 days/week)</small>
+                </p>
+                <span class="value" id="moderate">0</span>
+              </li>
+              <li class="lli">
+                <p>
+                  <strong class="name">Very Active</strong>
+                  <small class="desc">Hard exercise or sports (6-7 days/week)</small>
+                </p>
+                <span class="value" id="very-active">0</span>
+              </li>
+              <li class="lli">
+                <p>
+                  <strong class="name">Extra Active</strong>
+                  <small class="desc">Very hard exercise, physical job, or training twice a day</small>
+                </p>
+                <span class="value" id="super-active">0</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block calculator_page_article %}
+  <h4 class="calculator-article-headline">What is BMR?</h4>
+  <p class="calculator-article-description">
+    BMR, or <strong class="dark-span">Basal Metabolic Rate</strong>, is the
+    number of calories your body requires to maintain basic physiological
+    functions at rest. These functions include:
+  </p>
+  <ul role="list" class="list">
+    <li><strong>Breathing</strong></li>
+    <li><strong>Circulating blood</strong></li>
+    <li><strong>Maintaining body temperature</strong></li>
+    <li><strong>Metabolism</strong></li>
+    <li><strong>Cell function, growth, and repair</strong></li>
+  </ul>
+  <p class="calculator-article-description">
+    As you age, both your BMR and Total Daily Energy Expenditure (TDEE)
+    typically decline. Understanding your BMR is a foundational step in
+    managing your weight, as it helps you gauge your body&#x27;s caloric
+    needs when at rest.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong
+      >CALCULATING YOUR BASAL METABOLIC RATE AND CALORIC NEEDS</strong
+    >
+  </h4>
+  <p class="calculator-article-description">
+    Calculating your caloric needs is essential when starting a new diet
+    or training plan. The key number to determine is your
+    <strong>Basal Metabolic Rate (BMR)</strong>.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>HOW TO CALCULATE YOUR BMR</strong>
+  </h4>
+  <p class="calculator-article-description">
+    You can estimate your BMR using the
+    <strong class="dark-span">Harris-Benedict Equation</strong>:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>For Women: </strong
+      ><span class="light-span"
+        ><strong
+          >BMR = 655 + (9.6 × weight in kg) + (1.8 × height in cm) − (4.7
+          × age in years)</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>For Men: </strong
+      ><span class="light-span"
+        ><strong
+          >BMR = 66 + (13.7 × weight in kg) + (5 × height in cm) − (6.8 ×
+          age in years)</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <h4 class="calculator-article-headline">
+    <strong>WHY YOUR BMR IS SO IMPORTANT</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Understanding your BMR is crucial for various fitness goals:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>To Lose Weight: </strong
+      ><span class="light-span"
+        ><strong
+          >Create a calorie deficit by consuming fewer calories than your
+          BMR. This allows you to accurately estimate your daily caloric
+          needs and monitor your progress towards weight loss.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>To Gain Weight: </strong
+      ><span class="light-span"
+        ><strong
+          >If your goal is to gain weight, you&#x27;ll need to consume
+          more calories than your BMR. This surplus provides the energy
+          necessary to build muscle and increase overall mass.</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <p class="calculator-article-description">
+    In summary, your BMR serves as a vital tool for weight management,
+    whether your goal is loss, gain, or maintenance.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>WHAT DOES BMR TELL YOU ABOUT TDEE</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Your BMR is the foundation of your
+    <strong>Total Daily Energy Expenditure (TDEE)</strong>:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>BMR </strong
+      ><span class="light-span"
+        ><strong
+          >indicates the calories needed for basic functions at
+          rest.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>TDEE </strong
+      ><span class="light-span"
+        ><strong
+          >includes BMR plus calories burned through daily activities and
+          exercise.</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <p class="calculator-article-description">
+    Understanding both values helps you determine how many calories you
+    should consume daily to maintain, lose, or gain weight.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>HOW TO USE A BMR CALCULATOR</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Follow these steps to use a BMR calculator effectively:
+  </p>
+  <ol role="list" class="list">
+    <li>
+        <span>
+            <strong>Gather Your Information:</strong><br />
+            <ul>
+              <li><span class="light-span">Age</span></li>
+              <li><span class="light-span">Gender</span></li>
+              <li><span class="light-span">Weight</span></li>
+              <li><span class="light-span">Height</span></li>
+              <li><span class="light-span">Activity level (sedentary, lightly active, moderately active, very active)</span></li>
+            </ul>
+          </span>
+    </li>
+    <li>
+      <span
+        ><strong>Choose a BMR Calculation Formula: </strong></span
+      ><span class="light-span"
+        ><strong
+          >Use the Harris-Benedict Equation, inputting your data.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <span
+        ><strong
+          >Calculate Your BMR: Use the formula to find your BMR.</strong
+        ></span
+      >
+    </li>
+    <li>
+        <span>
+          <strong>Determine Your Total Daily Energy Expenditure (TDEE):</strong>
+        </span>
+        <span class="light-span">
+          <strong>Multiply your BMR by an activity factor:</strong>
+          <ul>
+            <li><strong>Sedentary: </strong>BMR x 1.2</li>
+            <li><strong>Lightly active: </strong>BMR x 1.375</li>
+            <li><strong>Moderately active: </strong>BMR x 1.55</li>
+            <li><strong>Very active: </strong>BMR x 1.725</li>
+            <li><strong>Extra active: </strong>BMR x 1.9</li>
+          </ul>
+        </span>
+    </li>
+
+    <li>
+      <span
+        ><strong>Set Your Fitness Goals: </strong></span
+      ><span class="light-span"
+        ><strong
+          >Customize your calorie intake based on whether you want to
+          lose, gain, or maintain weight.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <span
+        ><strong>Monitor and Adjust: </strong></span
+      ><strong class="light-span"
+        >Regularly check your progress and modify your intake as
+        necessary.</strong
+      >
+    </li>
+  </ol>
+  <h4 class="calculator-article-headline">
+    <strong>HOW MANY CALORIES YOUR LIFESTYLE DEMANDS</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Once you have your BMR, you need to factor in your activity level to
+    determine your daily caloric needs.
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>Sedentary: </strong
+      ><span class="light-span"><strong>Multiply BMR by 1.2</strong></span>
+    </li>
+    <li>
+      <strong>Lightly active: </strong
+      ><span class="light-span"
+        ><strong>Multiply BMR by 1.375</strong></span
+      >
+    </li>
+    <li>
+      <strong>Moderately active: </strong
+      ><span class="light-span"><strong>Multiply BMR by 1.55</strong></span>
+    </li>
+    <li>
+      <strong>Very active: </strong
+      ><span class="light-span"
+        ><strong>Multiply BMR by 1.725</strong></span
+      >
+    </li>
+    <li>
+      <strong>Extra active: </strong
+      ><span class="light-span"><strong>Multiply BMR by 1.9</strong></span>
+    </li>
+  </ul>
+  <p class="calculator-article-description">
+    This number represents your daily calorie needs to maintain your
+    current weight. To adjust your weight, add or deduct 500 calories for
+    gradual changes.
+  </p>
+  <h4 class="calculator-article-headline">
+    <strong>SET YOUR FITNESS PLAN</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Now that you understand your caloric needs, you can tailor your
+    fitness plan:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>Set Realistic Goals: </strong
+      ><span class="light-span"
+        ><strong
+          >Establish achievable objectives for weight loss or muscle
+          gain.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Monitor Progress: </strong
+      ><span class="light-span"
+        ><strong
+          >Track calorie intake and exercise with apps or
+          journals.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Pay Attention to Nutrition: </strong
+      ><span class="light-span"
+        ><strong>Focus on a balanced diet of whole foods.</strong></span
+      >
+    </li>
+    <li>
+      <strong>Stay Active: </strong
+      ><span class="light-span"
+        ><strong
+          >Incorporate various forms of exercise into your
+          routine.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Consult a Professional: </strong
+      ><span class="light-span"
+        ><strong
+          >Seek expert guidance for personalized plans.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Be Patient and Persistent: </strong
+      ><span class="light-span"
+        ><strong
+          >Recognize that progress takes time and commitment.</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <h4 class="calculator-article-headline">
+    <strong>LIMITATIONS OF THE BMR CALCULATOR</strong>
+  </h4>
+  <p class="calculator-article-description">
+    Keep in mind the limitations of BMR calculators:
+  </p>
+  <ul role="list" class="list">
+    <li>
+      <strong>Simplified Assumptions: </strong
+      ><span class="light-span"
+        ><strong
+          >They may not account for individual differences.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Doesn&#x27;t Account for Muscle Mass: </strong
+      ><span class="light-span"
+        ><strong
+          >Muscle mass significantly affects metabolic rate.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Changing Factors: </strong
+      ><span class="light-span"
+        ><strong
+          >BMR can change over time due to various factors.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <strong>Not a Standalone Solution: </strong
+      ><span class="light-span"
+        ><strong
+          >Nutrition and lifestyle choices are equally important.</strong
+        ></span
+      >
+    </li>
+  </ul>
+  <h4 class="calculator-article-headline">
+    <strong>FAQs ABOUT BMR AND WEIGHT MANAGEMENT</strong>
+  </h4>
+  <ol role="list" class="list">
+    <li>
+      <span
+        ><strong>How can I calculate my BMR?<br /></strong></span
+      ><span class="light-span"
+        ><strong
+          >Use the Harris-Benedict Equation or online calculators,
+          requiring age, gender, weight, and height.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <span
+        ><strong>Will I lose weight if I eat my BMR?<br /></strong></span
+      ><strong class="light-span"
+        >Eating at your BMR typically maintains weight. To lose weight,
+        consume fewer calories than your BMR or TDEE.</strong
+      >
+    </li>
+    <li>
+      <span
+        ><strong
+          >How do I calculate my BMR for weight loss?<br /></strong></span
+      ><span class="light-span"
+        ><strong
+          >First, find your BMR, then create a calorie deficit by
+          consuming fewer calories than your BMR.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <span
+        ><strong
+          >How to lose weight with a BMR of 1500?<br /></strong></span
+      ><span class="light-span"
+        ><strong
+          >Aim for a daily intake of 1200-1400 calories, incorporating
+          physical activity.</strong
+        ></span
+      >
+    </li>
+    <li>
+      <span
+        ><strong>What is a good BMR for my age?<br /></strong></span
+      ><span
+        ><strong class="light-span"
+          >BMR varies by age, gender, and individual differences. Use
+          calculators for specific estimates.</strong
+        ></span
+      >
+    </li>
+  </ol>
+{% endblock %}
