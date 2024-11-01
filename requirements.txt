@@ -5,12 +5,10 @@ certifi==2024.7.4
 charset-normalizer==3.3.2
 click==8.1.7
 colorama==0.4.4
-command-not-found==0.3
 cryptography==3.4.8
 cs50==9.3.4
 dbus-python==1.2.18
 distro==1.7.0
-distro-info==1.1+ubuntu0.2
 Flask==3.0.3
 Flask-Session==0.8.0
 greenlet==3.0.3
@@ -36,7 +34,6 @@ pyinotify==0.9.6
 PyJWT==2.3.0
 pyOpenSSL==21.0.0
 pyparsing==2.4.7
-python-apt==2.4.0+ubuntu3
 pytz==2022.1
 PyYAML==5.4.1
 requests==2.32.3
