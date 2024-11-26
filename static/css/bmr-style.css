@@ -490,6 +490,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 1rem;
+  overflow: visible;
 }
 
 .bmr-calc-container {
@@ -499,6 +500,7 @@ body {
   padding: 20px;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  overflow: visible;
 }
 
 .bmr-calc-container h1 {
@@ -557,14 +559,15 @@ form#calculator button:hover {
 
 div#result {
   max-height: 0;
-  opacity: 0;
+  opacity: 1;
   overflow: hidden;
+  height: auto;
   transition: max-height 0.3s cubic-bezier(0.76, 0, 0.24, 1),
     opacity 0.3s ease-in-out 0.3s;
 }
 
 div#result.show {
-  max-height: 500px;
+  max-height: 1000px;
   opacity: 1;
 }
 
@@ -600,12 +603,8 @@ div#result.show {
   margin-top: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
-}
-
-.hh3{
-  padding: 5px 10px;
-  text-align: center;
-  color: slateblue;
+  overflow: visible;
+  height: auto;
 }
 
 .daily-calories h3 {
@@ -617,6 +616,8 @@ div#result.show {
 .activity-levels {
   list-style-type: none;
   border-top: 1px solid #ddd;
+  padding: 10px 0;
+  margin-bottom: -25px;
 }
 
 .activity-levels .lli{
@@ -630,20 +631,20 @@ div#result.show {
   background: rgba(105, 90, 205, 0.05);
 }
 
-.activity-levels p {
+.activity-levels .lli p {
   line-height: 1.15;
 }
 
-.activity-levels .name {
+.activity-levels .lli .name {
   display: block;
   font-weight: 500;
   color: #333;
 }
 
-.activity-levels .desc {
+.activity-levels .lli .desc {
   color: slategray;
 }
 
-.activity-levels .value {
+.activity-levels .lli .value {
   font-weight: 500;
 }

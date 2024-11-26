@@ -80,7 +80,6 @@ html[data-w-dynpage] [data-w-cloak] {
 
 h1,
 h2,
-h3,
 h4,
 h5,
 h6 {
@@ -98,12 +97,6 @@ h2 {
   margin-top: 20px;
   font-size: 32px;
   line-height: 36px
-}
-
-h3 {
-  margin-top: 20px;
-  font-size: 24px;
-  line-height: 30px
 }
 
 h4 {
@@ -193,15 +186,6 @@ h2 {
   font-size: 30px;
   font-weight: 600;
   line-height: 36px
-}
-
-h3 {
-  color: #f4f4f9;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 30px
 }
 
 .container {
@@ -485,10 +469,11 @@ body {
 }
 
 .bmitable-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  overflow: visible;
 }
 
 .ibw-calc-container {
@@ -500,7 +485,7 @@ body {
   border-radius: 10px;
   display: grid;
   gap: 1rem;
-
+  overflow: visible;
 }
 
 .ibw-calc-container h1 {
@@ -569,49 +554,24 @@ form#calculator button:hover {
 
 div#result {
   max-height: 0;
-  opacity: 0;
+  opacity: 1;
   overflow: hidden;
+  height: auto;
   transition: max-height 0.3s cubic-bezier(0.76, 0, 0.24, 1),
     opacity 0.3s ease-in-out 0.3s;
 }
 
 div#result.show {
-  max-height: 500px;
+  max-height: 1000px;
   opacity: 1;
-}
-
-.bmr {
-  margin-top: 20px;
-  display: grid;
-  justify-items: center;
-  gap: 10px;
-}
-
-.bmr span {
-  background: rgba(105, 90, 205, 0.15);
-  color: #ff4f70;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0 10px;
-  border-radius: 10px;
-}
-
-.bmr h2 {
-  font-size: 4rem;
-  font-weight: 500;
-  line-height: 1;
-  color: #ff4f70;
-}
-
-.bmr p {
-  color: slategray;
-  font-weight: 500;
 }
 
 .formula-results {
   margin-top: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  overflow: visible;
+  height: auto;
 }
 
 .formula-results h3 {
@@ -623,34 +583,36 @@ div#result.show {
 .formula-table {
   list-style-type: none;
   border-top: 1px solid #ddd;
+  padding: 10px 0;
+  margin-bottom: -25px;
 }
 
-.formula-table li {
+.formula-table .lli {
   padding: 5px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.formula-table li:nth-child(even) {
+.formula-table .lli:nth-child(even) {
   background: rgba(105, 90, 205, 0.05);
 }
 
-.formula-table p {
+.formula-table .lli p {
   line-height: 1.15;
 }
 
-.formula-table .name {
+.formula-table .lli .name {
   display: block;
   font-weight: 500;
   color: #333;
 }
 
-.formula-table .desc {
+.formula-table .lli .desc {
   color: slategray;
 }
 
-.formula-table .value {
+.formula-table .lli .value {
   font-weight: 500;
 }
 

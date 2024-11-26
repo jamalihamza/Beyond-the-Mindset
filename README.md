@@ -1,6 +1,6 @@
 Beyond the Mindset
 
-Video Demo: [NOT YET]
+Video Demo: https://youtu.be/Gy3N0I8LAVQ
 
 Description:
 "Beyond the Mindset" is a web platform designed to empower individuals to manage their physical well-being through specialized health calculators. Users can access tools for assessing various health metrics, such as BMI, BMR, heart rate, and sleep needs. Each calculator provides an easy-to-use interface along with explanations and insights, facilitating better understanding and management of personal health.
